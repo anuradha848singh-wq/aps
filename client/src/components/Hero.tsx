@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Phone, MessageCircle } from "lucide-react"
 import AnimatedCounter from "./AnimatedCounter"
-import heroImage from "@assets/generated_images/Professional_facility_management_team_d48426d8.png"
+import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage}
-          alt="Professional facility management team"
+          alt="Indian APS facility management team"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
@@ -88,19 +88,19 @@ export default function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                <AnimatedCounter end={15} suffix="+" />
+                <AnimatedCounter end={8} suffix="+" />
               </div>
               <div className="text-white/80">Years Experience</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                <AnimatedCounter end={500} suffix="+" />
+                <AnimatedCounter end={50} suffix="+" />
               </div>
               <div className="text-white/80">Clients Served</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                <AnimatedCounter end={2000} suffix="+" />
+                <AnimatedCounter end={200} suffix="+" />
               </div>
               <div className="text-white/80">Employees Trained</div>
             </div>

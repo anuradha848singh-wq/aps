@@ -1,4 +1,5 @@
 import ServiceCard from "./ServiceCard"
+import ScrollAnimation from "./ScrollAnimation"
 import { 
   Brush, 
   Shield, 
@@ -7,9 +8,9 @@ import {
   Building, 
   Coffee 
 } from "lucide-react"
-import housekeepingImage from "@assets/generated_images/Professional_housekeeping_cleaning_service_75b74e13.png"
-import securityImage from "@assets/generated_images/Professional_security_service_team_b9c41dc8.png"
-import eventImage from "@assets/generated_images/Professional_event_management_setup_5d6378b7.png"
+import housekeepingImage from "@assets/generated_images/Indian_APS_housekeeping_team_a0f857bb.png"
+import securityImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.png"
+import eventImage from "@assets/generated_images/Indian_APS_event_management_6454c28d.png"
 
 export default function Services() {
   const services = [
@@ -110,15 +111,16 @@ export default function Services() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              features={service.features}
-              image={service.image}
-              onLearnMore={() => handleLearnMore(service.title)}
-            />
+            <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                features={service.features}
+                image={service.image}
+                onLearnMore={() => handleLearnMore(service.title)}
+              />
+            </ScrollAnimation>
           ))}
         </div>
       </div>

@@ -7,19 +7,19 @@ export default function AnimatedCounterExample() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="text-center">
           <div className="text-3xl font-bold text-primary">
-            <AnimatedCounter end={15} suffix="+" />
+            <AnimatedCounter end={8} suffix="+" />
           </div>
           <div className="text-muted-foreground">Years Experience</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-primary">
-            <AnimatedCounter end={500} suffix="+" />
+            <AnimatedCounter end={50} suffix="+" />
           </div>
           <div className="text-muted-foreground">Clients Served</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-primary">
-            <AnimatedCounter end={2000} suffix="+" />
+            <AnimatedCounter end={200} suffix="+" />
           </div>
           <div className="text-muted-foreground">Employees Trained</div>
         </div>
