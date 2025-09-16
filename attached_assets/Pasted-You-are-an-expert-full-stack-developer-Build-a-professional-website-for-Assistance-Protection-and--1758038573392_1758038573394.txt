@@ -1,0 +1,49 @@
+You are an expert full-stack developer. Build a professional website for "Assistance Protection and Services (APS)" — a facility management company offering housekeeping, cleaning, security, caretaker outsourcing, event management, and manpower solutions.  
+
+🔑 Requirements:
+1. **Design & Layout**
+   - Modern, responsive design with **dark mode + light mode toggle**.
+   - Smooth **scroll animations**, section fade-ins, parallax effects, and hover interactions.
+   - Sticky navigation bar with dropdowns.
+   - Hero section with company name, tagline: *“One-stop solution for protection and services.”*  
+   - Use brand colors: professional blue/gray for light theme, dark navy/black with accents for dark theme.
+
+2. **Pages / Sections**
+   - **Home:** Hero banner, mission/vision/value highlights, quick service overview.
+   - **About Us:** Company profile (from PDF), history, mission, vision, values.
+   - **Services:** 
+        - Housekeeping & Cleaning
+        - Event Management
+        - Security & Caretaker Outsourcing
+        - Canteen & Pantry Management
+        - Industrial & Residential Facilities
+   - **Training & Quality:** Explain training, supervision, employee discipline, and monitoring (from PDF).
+   - **Customer Satisfaction:** How APS checks quality, day/night checks, feedback loop, proactive improvement.
+   - **Caretaker Responsibilities:** Display the 10 caretaker responsibilities as a visually appealing icon-grid or timeline.
+   - **Contact:** Contact form + details (phone, email, address). Add WhatsApp and direct call buttons.
+   - **Legal & Compliance:** Show ESIC, PF, PAN, and Registration numbers listed in the PDF.
+
+3. **Features**
+   - **Animations:** 
+        - Smooth scroll transitions between sections.
+        - Card hover effects for services.
+        - Animated counters for "Years of Experience," "Clients Served," "Employees Trained."
+   - **Theme toggle:** Button in navbar to switch between dark/light.
+   - **SEO optimization:** Meta tags, open graph, keywords for facility management, housekeeping, security services.
+   - **Responsive design:** Optimized for mobile, tablet, desktop.
+   - **Accessibility:** ARIA labels, keyboard navigation, alt text for images.
+
+4. **Tech Stack**
+   - Frontend: React + TailwindCSS (for modern design and theme toggle).
+   - Animations: Framer Motion + AOS (Animate on Scroll).
+   - Backend: Node.js + Express (for contact form).
+   - Database: MongoDB (to store contact form inquiries).
+   - Deployment ready (Vercel/Netlify for frontend, Render/Heroku for backend).
+
+5. **Extras**
+   - Include a testimonial/feedback section.
+   - FAQ accordion (general service queries).
+   - Floating "Request a Quote" button leading to contact form.
+   - Footer: Social media icons, quick links, and copyright.
+
+📑 Use all the company details from the attached service profile PDF to generate real content. Write clean, semantic code with comments. Optimize performance and keep design fluid and professional.
