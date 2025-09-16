@@ -11,6 +11,7 @@ import { FileText, Send } from "lucide-react"
 export default function FloatingQuoteButton() {
   const { toast } = useToast()
   const [isOpen, setIsOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [quoteData, setQuoteData] = useState({
     name: "",
     email: "",
@@ -30,23 +31,50 @@ export default function FloatingQuoteButton() {
     setQuoteData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Quote request:", quoteData)
-    toast({
-      title: "Quote Request Sent!",
-      description: "We'll send you a detailed quote within 24 hours.",
-    })
-    setQuoteData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      facility: "",
-      message: ""
-    })
-    setIsOpen(false)
+    setIsSubmitting(true)
+    
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quoteData),
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok && result.success) {
+        toast({
+          title: "Quote Request Sent!",
+          description: "We'll send you a detailed quote within 24 hours.",
+        })
+        
+        setQuoteData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          facility: "",
+          message: ""
+        })
+        setIsOpen(false)
+      } else {
+        throw new Error(result.message || 'Failed to send quote request')
+      }
+    } catch (error) {
+      console.error('Quote request error:', error)
+      toast({
+        title: "Error Sending Quote Request",
+        description: error instanceof Error ? error.message : "Please try again later.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
