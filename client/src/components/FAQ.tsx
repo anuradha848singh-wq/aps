@@ -2,6 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button"
 import { MessageCircle } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
+import { useSiteContent } from "@/hooks/useSiteContent"
 
 const faqs = [
   {
@@ -39,35 +40,36 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const { content } = useSiteContent()
+
   return (
     <section id="faq" className="py-16 sm:py-24 border-t bg-muted/20">
-      <div className="container mx-auto px-6 sm:px-10">
+      <div className="container mx-auto px-5 sm:px-10">
 
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20 items-start">
 
           {/* Left: header */}
           <ScrollAnimation direction="left">
             <div className="lg:sticky lg:top-24">
               <div className="gold-label mb-4">FAQ</div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-5">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-4">
                 Common Questions
               </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-7">
                 Everything you need to know before working with us. Can't find the answer? Get in touch.
               </p>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 items-start">
                 <a
-                  href="https://wa.me/91XXXXXXXXXX?text=Hello%20APS%20Services"
+                  href={`https://wa.me/${content.contact.whatsapp}?text=Hello%20APS%20Services`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-3 transition-colors w-fit"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-3 transition-colors"
                   data-testid="whatsapp-faq"
                 >
                   <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
                 </a>
                 <Button
                   variant="outline"
-                  className="w-fit"
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   Send a Message

@@ -1,6 +1,7 @@
 import { Target, Eye, Heart, Award, CheckCircle, Building, Users, Star } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
 import teamImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
+import { useSiteContent } from "@/hooks/useSiteContent"
 
 const values = [
   {
@@ -20,13 +21,6 @@ const values = [
   },
 ]
 
-const registrations = [
-  { label: "ESIC Registration", value: "18000318980001099" },
-  { label: "PF Registration", value: "MPIND1982610000" },
-  { label: "PAN Number", value: "EVTPS1296E" },
-  { label: "Trade Registration", value: "INDO240410SE004049" },
-]
-
 const highlights = [
   { icon: Building, text: "Serving factories, malls & residential complexes" },
   { icon: Users, text: "200+ trained, background-verified professionals" },
@@ -35,11 +29,21 @@ const highlights = [
 ]
 
 export default function About() {
+  const { content } = useSiteContent()
+  const { company, about } = content
+
+  const registrations = [
+    { label: "ESIC Registration", value: company.esic },
+    { label: "PF Registration", value: company.pf },
+    { label: "PAN Number", value: company.pan },
+    { label: "Trade Registration", value: company.reg },
+  ]
+
   return (
     <section id="about" className="py-16 sm:py-24 border-t">
-      <div className="container mx-auto px-6 sm:px-10">
+      <div className="container mx-auto px-5 sm:px-10">
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center mb-14 sm:mb-20">
 
           {/* Image side */}
           <ScrollAnimation direction="left">
@@ -51,8 +55,8 @@ export default function About() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 bg-background border shadow-lg p-4 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full border-2 border-primary/30 flex items-center justify-center shrink-0">
+              <div className="absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-4 bg-background border shadow-lg p-3 sm:p-4 flex items-center gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-primary/30 flex items-center justify-center shrink-0">
                   <Award className="h-4 w-4 text-primary" />
                 </div>
                 <div>
@@ -67,14 +71,14 @@ export default function About() {
           <ScrollAnimation direction="right">
             <div>
               <div className="gold-label mb-4 sm:mb-5">Who We Are</div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-5">
-                A Company Built on<br />Trust & Quality
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-4">
+                {about.title}
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
-                <strong className="text-foreground">Assistance Protection and Services (APS)</strong> is a specialized service provider delivering housekeeping, security, event management, caretaker outsourcing, and comprehensive manpower services to clients across India.
+              <p className="text-muted-foreground leading-relaxed mb-3 text-sm sm:text-base">
+                {about.body1}
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base mb-6">
-                We work with factories, shopping malls, townships, corporate offices, and residences — bringing the same commitment to quality regardless of client size.
+                {about.body2}
               </p>
               <div className="space-y-3 mb-6">
                 {highlights.map((h, i) => (
@@ -95,7 +99,7 @@ export default function About() {
                       <CheckCircle className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-medium">{r.label}</div>
-                        <div className="text-xs text-muted-foreground font-mono">{r.value}</div>
+                        <div className="text-xs text-muted-foreground font-mono break-all">{r.value}</div>
                       </div>
                     </div>
                   ))}

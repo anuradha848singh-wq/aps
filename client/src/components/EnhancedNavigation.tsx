@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Moon, Sun, Menu, ChevronDown, ArrowRight } from "lucide-react"
 import { useTheme } from "./ThemeProvider"
+import logoImage from "@assets/image_1781530760930.png"
 
 export default function EnhancedNavigation() {
   const { theme, toggleTheme } = useTheme()
@@ -25,8 +26,7 @@ export default function EnhancedNavigation() {
     { label: "Home", action: () => { window.scrollTo({ top: 0, behavior: "smooth" }); setIsOpen(false) } },
     { label: "About Us", id: "about" },
     {
-      label: "Services",
-      id: "services",
+      label: "Services", id: "services",
       sub: [
         { label: "Housekeeping & Cleaning", id: "services" },
         { label: "Security & Caretaker", id: "services" },
@@ -46,12 +46,13 @@ export default function EnhancedNavigation() {
       <div className="flex items-center h-16 sm:h-[4.5rem]">
 
         {/* Logo */}
-        <div className="pl-6 sm:pl-10 pr-6 shrink-0">
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-black text-xl sm:text-2xl tracking-tight text-foreground">APS</span>
-            <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] uppercase text-muted-foreground -mt-0.5">
-              Manpower Services
-            </span>
+        <div className="pl-4 sm:pl-6 pr-4 sm:pr-6 shrink-0 flex items-center">
+          <Link href="/">
+            <img
+              src={logoImage}
+              alt="APS Manpower Services"
+              className="h-9 sm:h-11 w-auto object-contain"
+            />
           </Link>
         </div>
 
@@ -59,12 +60,12 @@ export default function EnhancedNavigation() {
         <div className="hidden lg:block w-px h-8 bg-border shrink-0" />
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center px-6">
+        <nav className="hidden lg:flex items-center gap-0.5 flex-1 justify-center px-4">
           {navLinks.map((item) =>
             item.sub ? (
               <DropdownMenu key={item.label}>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate">
+                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate">
                     {item.label} <ChevronDown className="h-3 w-3" />
                   </button>
                 </DropdownMenuTrigger>
@@ -80,7 +81,7 @@ export default function EnhancedNavigation() {
               <button
                 key={item.label}
                 onClick={() => item.action ? item.action() : scrollTo(item.id!)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
+                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {item.label}
@@ -89,20 +90,21 @@ export default function EnhancedNavigation() {
           )}
         </nav>
 
-        {/* Right: theme + CTA */}
+        {/* Right side */}
         <div className="flex items-center ml-auto">
           <button
             onClick={toggleTheme}
             className="hidden lg:flex items-center justify-center w-10 h-10 text-muted-foreground hover:text-foreground transition-colors hover-elevate rounded-md"
+            aria-label="Toggle theme"
             data-testid="theme-toggle"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
-          {/* Gold GET A QUOTE block */}
+          {/* Gold GET A QUOTE block — desktop */}
           <button
             onClick={() => scrollTo("contact")}
-            className="hidden lg:flex items-center gap-3 h-full px-7 py-5 bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:bg-primary/90 transition-colors group"
+            className="hidden lg:flex items-center gap-2.5 h-[4.5rem] px-6 bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:bg-primary/90 transition-colors group shrink-0"
             data-testid="nav-get-quote"
           >
             Get a Quote
@@ -110,10 +112,11 @@ export default function EnhancedNavigation() {
           </button>
 
           {/* Mobile controls */}
-          <div className="lg:hidden flex items-center gap-1 pr-4">
+          <div className="lg:hidden flex items-center gap-1 pr-3">
             <button
               onClick={toggleTheme}
               className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors rounded-md"
+              aria-label="Toggle theme"
               data-testid="theme-toggle"
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -124,31 +127,30 @@ export default function EnhancedNavigation() {
                   <Menu className="h-5 w-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72">
-                <div className="flex flex-col pt-4">
-                  <div className="mb-6">
-                    <span className="font-black text-2xl tracking-tight text-foreground">APS</span>
-                    <div className="text-[10px] font-semibold tracking-[0.18em] uppercase text-muted-foreground">Manpower Services</div>
+              <SheetContent side="right" className="w-72 p-0">
+                <div className="flex flex-col h-full">
+                  <div className="p-6 border-b">
+                    <img src={logoImage} alt="APS Manpower Services" className="h-10 w-auto" />
                   </div>
-
-                  <nav className="flex flex-col gap-1 mb-6">
+                  <nav className="flex flex-col p-4 gap-1 flex-1">
                     {navLinks.map((item) => (
                       <button
                         key={item.label}
                         onClick={() => item.action ? item.action() : scrollTo(item.id!)}
-                        className="text-left px-3 py-2.5 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                        className="text-left px-4 py-3 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-muted rounded-lg transition-colors"
                       >
                         {item.label}
                       </button>
                     ))}
                   </nav>
-
-                  <button
-                    onClick={() => scrollTo("contact")}
-                    className="flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 transition-colors"
-                  >
-                    Get a Quote <ArrowRight className="h-4 w-4" />
-                  </button>
+                  <div className="p-4 border-t">
+                    <button
+                      onClick={() => scrollTo("contact")}
+                      className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 transition-colors"
+                    >
+                      Get a Quote <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>

@@ -6,42 +6,45 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { Phone, Mail, MapPin, MessageCircle, Clock, Send, Loader2, ArrowRight } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
-
-const contactDetails = [
-  {
-    icon: Phone,
-    title: "Call Us",
-    lines: ["+91 (XXX) XXX-XXXX", "+91 (XXX) XXX-XXXX"],
-    href: "tel:+91XXXXXXXXXX",
-    linkLabel: "Call now",
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    lines: ["info@apsservices.com", "support@apsservices.com"],
-    href: "mailto:info@apsservices.com",
-    linkLabel: "Send email",
-  },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    lines: ["Business Address", "City, State – PIN Code"],
-    href: null,
-    linkLabel: null,
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    lines: ["Mon – Sat: 9 AM – 6 PM", "Emergency support 24/7"],
-    href: null,
-    linkLabel: null,
-  },
-]
+import { useSiteContent } from "@/hooks/useSiteContent"
 
 export default function Contact() {
   const { toast } = useToast()
+  const { content } = useSiteContent()
+  const { contact } = content
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", service: "", message: "" })
   const [submitting, setSubmitting] = useState(false)
+
+  const contactDetails = [
+    {
+      icon: Phone,
+      title: "Call Us",
+      lines: [contact.phone1, contact.phone2],
+      href: `tel:${contact.phone1.replace(/\s/g, "")}`,
+      linkLabel: "Call now",
+    },
+    {
+      icon: Mail,
+      title: "Email Us",
+      lines: [contact.email],
+      href: `mailto:${contact.email}`,
+      linkLabel: "Send email",
+    },
+    {
+      icon: MapPin,
+      title: "Visit Us",
+      lines: [contact.address],
+      href: null,
+      linkLabel: null,
+    },
+    {
+      icon: Clock,
+      title: "Business Hours",
+      lines: [contact.hours, "Emergency support 24/7"],
+      href: null,
+      linkLabel: null,
+    },
+  ]
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }))
@@ -71,18 +74,18 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 sm:py-24 border-t">
-      <div className="container mx-auto px-6 sm:px-10">
+      <div className="container mx-auto px-5 sm:px-10">
 
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
           {/* Left: info */}
           <div className="lg:col-span-2">
             <ScrollAnimation direction="left">
               <div className="gold-label mb-4">Get In Touch</div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-5">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-4">
                 Let's Talk About Your Needs
               </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-7">
                 Whether you need housekeeping for a factory or security for an office park — we're here to help.
               </p>
             </ScrollAnimation>
@@ -97,7 +100,7 @@ export default function Contact() {
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-sm mb-1">{c.title}</p>
                       {c.lines.map((l, j) => (
-                        <p key={j} className="text-xs text-muted-foreground">{l}</p>
+                        <p key={j} className="text-xs text-muted-foreground break-words">{l}</p>
                       ))}
                       {c.href && c.linkLabel && (
                         <a href={c.href} className="inline-flex items-center gap-1 text-xs text-primary font-semibold mt-1 hover:underline">
@@ -112,7 +115,7 @@ export default function Contact() {
 
             <ScrollAnimation direction="left" delay={0.28}>
               <a
-                href="https://wa.me/91XXXXXXXXXX?text=Hello%20APS%20Services"
+                href={`https://wa.me/${contact.whatsapp}?text=Hello%20APS%20Services`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full mt-6 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-3.5 transition-colors"
@@ -126,7 +129,7 @@ export default function Contact() {
 
           {/* Right: form */}
           <ScrollAnimation direction="right" className="lg:col-span-3">
-            <div className="border p-6 sm:p-8">
+            <div className="border p-5 sm:p-8">
               <h3 className="font-black text-xl mb-1">Send us a message</h3>
               <p className="text-muted-foreground text-sm mb-6">We usually respond within a few hours.</p>
 

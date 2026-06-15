@@ -8,43 +8,111 @@ import {
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
+export interface SiteContent {
+  hero: {
+    badge: string;
+    title1: string;
+    title2: string;
+    subtitle: string;
+    stats: Array<{ value: number; suffix: string; label: string }>;
+  };
+  contact: {
+    phone1: string;
+    phone2: string;
+    email: string;
+    address: string;
+    whatsapp: string;
+    hours: string;
+  };
+  company: {
+    tagline: string;
+    founded: string;
+    description: string;
+    esic: string;
+    pf: string;
+    pan: string;
+    reg: string;
+  };
+  about: {
+    title: string;
+    body1: string;
+    body2: string;
+  };
+}
+
+const defaultContent: SiteContent = {
+  hero: {
+    badge: "Trusted Manpower Solutions",
+    title1: "Building Workforce.",
+    title2: "Delivering Excellence.",
+    subtitle: "APS Manpower Services is a leading provider of integrated manpower solutions across Security, Housekeeping, Facility Management and Staffing Services.",
+    stats: [
+      { value: 200, suffix: "+", label: "Trained Employees" },
+      { value: 50, suffix: "+", label: "Corporate Clients" },
+      { value: 8, suffix: "+", label: "Years in Service" },
+      { value: 24, suffix: "/7", label: "Support Services" },
+    ],
+  },
+  contact: {
+    phone1: "+91 (XXX) XXX-XXXX",
+    phone2: "+91 (XXX) XXX-XXXX",
+    email: "info@apsservices.com",
+    address: "Business Address, City, State – PIN Code",
+    whatsapp: "91XXXXXXXXXX",
+    hours: "Mon – Sat: 9 AM – 6 PM",
+  },
+  company: {
+    tagline: "People. Trust. Performance.",
+    founded: "2016",
+    description: "Professional facility management for factories, offices, malls, and residences — delivering consistency, reliability, and quality across India.",
+    esic: "18000318980001099",
+    pf: "MPIND1982610000",
+    pan: "EVTPS1296E",
+    reg: "INDO240410SE004049",
+  },
+  about: {
+    title: "A Company Built on Trust & Quality",
+    body1: "Assistance Protection and Services (APS) is a specialized service provider delivering housekeeping, security, event management, caretaker outsourcing, and comprehensive manpower services to clients across India.",
+    body2: "We work with factories, shopping malls, townships, corporate offices, and residences — bringing the same commitment to quality regardless of client size.",
+  },
+};
+
 export interface IStorage {
-  // User methods
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   
-  // Contact inquiry methods
   createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry>;
   getContactInquiries(): Promise<ContactInquiry[]>;
   updateContactInquiryStatus(id: string, status: string): Promise<ContactInquiry | undefined>;
   
-  // Quote request methods
   createQuoteRequest(quote: InsertQuoteRequest): Promise<QuoteRequest>;
   getQuoteRequests(): Promise<QuoteRequest[]>;
   updateQuoteRequestStatus(id: string, status: string): Promise<QuoteRequest | undefined>;
+
+  getSiteContent(): Promise<SiteContent>;
+  updateSiteContent(content: Partial<SiteContent>): Promise<SiteContent>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private contactInquiries: Map<string, ContactInquiry>;
   private quoteRequests: Map<string, QuoteRequest>;
+  private siteContent: SiteContent;
 
   constructor() {
     this.users = new Map();
     this.contactInquiries = new Map();
     this.quoteRequests = new Map();
+    this.siteContent = JSON.parse(JSON.stringify(defaultContent));
   }
 
-  // User methods
   async getUser(id: string): Promise<User | undefined> {
     return this.users.get(id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    return Array.from(this.users.values()).find(u => u.username === username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
@@ -54,7 +122,6 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  // Contact inquiry methods
   async createContactInquiry(insertInquiry: InsertContactInquiry): Promise<ContactInquiry> {
     const id = randomUUID();
     const inquiry: ContactInquiry = {
@@ -88,7 +155,6 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
-  // Quote request methods
   async createQuoteRequest(insertQuote: InsertQuoteRequest): Promise<QuoteRequest> {
     const id = randomUUID();
     const quote: QuoteRequest = {
@@ -121,6 +187,22 @@ export class MemStorage implements IStorage {
       return quote;
     }
     return undefined;
+  }
+
+  async getSiteContent(): Promise<SiteContent> {
+    return this.siteContent;
+  }
+
+  async updateSiteContent(updates: Partial<SiteContent>): Promise<SiteContent> {
+    this.siteContent = {
+      ...this.siteContent,
+      ...updates,
+      hero: updates.hero ? { ...this.siteContent.hero, ...updates.hero } : this.siteContent.hero,
+      contact: updates.contact ? { ...this.siteContent.contact, ...updates.contact } : this.siteContent.contact,
+      company: updates.company ? { ...this.siteContent.company, ...updates.company } : this.siteContent.company,
+      about: updates.about ? { ...this.siteContent.about, ...updates.about } : this.siteContent.about,
+    };
+    return this.siteContent;
   }
 }
 
