@@ -1,0 +1,1 @@
+- [APS Design System](aps-design-system.md) — gold/amber primary (#38 72% 40%), dark navy foreground, grid-border card layout, gold-label utility class

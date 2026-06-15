@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
-import { Phone, Mail, MapPin, MessageCircle, Clock, Send, Loader2 } from "lucide-react"
+import { Phone, Mail, MapPin, MessageCircle, Clock, Send, Loader2, ArrowRight } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
 
 const contactDetails = [
@@ -63,7 +62,7 @@ export default function Contact() {
       } else {
         throw new Error(data.message || "Failed to send")
       }
-    } catch (err) {
+    } catch {
       toast({ title: "Something went wrong", description: "Please try again or call us directly.", variant: "destructive" })
     } finally {
       setSubmitting(false)
@@ -71,54 +70,52 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-muted/20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="contact" className="py-16 sm:py-24 border-t">
+      <div className="container mx-auto px-6 sm:px-10">
 
-        <ScrollAnimation direction="up">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
-              Get In Touch
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Let's Talk About <span className="text-primary">Your Needs</span>
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Whether you need housekeeping for a factory or security for an office park — we're here to help. Fill in the form or reach out directly.
-            </p>
-          </div>
-        </ScrollAnimation>
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+          {/* Left: info */}
+          <div className="lg:col-span-2">
+            <ScrollAnimation direction="left">
+              <div className="gold-label mb-4">Get In Touch</div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-5">
+                Let's Talk About Your Needs
+              </h2>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                Whether you need housekeeping for a factory or security for an office park — we're here to help.
+              </p>
+            </ScrollAnimation>
 
-          {/* Left: contact info */}
-          <div className="lg:col-span-2 space-y-4">
-            {contactDetails.map((c, i) => (
-              <ScrollAnimation key={i} direction="left" delay={i * 0.07}>
-                <div className="flex items-start gap-4 p-4 rounded-xl border bg-card hover-elevate">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <c.icon className="h-4 w-4 text-primary" />
+            <div className="space-y-0 border-t">
+              {contactDetails.map((c, i) => (
+                <ScrollAnimation key={i} direction="left" delay={i * 0.07}>
+                  <div className="flex items-start gap-4 py-4 border-b">
+                    <div className="w-9 h-9 rounded-full border-2 border-border flex items-center justify-center shrink-0 mt-0.5">
+                      <c.icon className="h-3.5 w-3.5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-sm mb-1">{c.title}</p>
+                      {c.lines.map((l, j) => (
+                        <p key={j} className="text-xs text-muted-foreground">{l}</p>
+                      ))}
+                      {c.href && c.linkLabel && (
+                        <a href={c.href} className="inline-flex items-center gap-1 text-xs text-primary font-semibold mt-1 hover:underline">
+                          {c.linkLabel} <ArrowRight className="h-3 w-3" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm mb-1">{c.title}</p>
-                    {c.lines.map((l, j) => (
-                      <p key={j} className="text-xs text-muted-foreground">{l}</p>
-                    ))}
-                    {c.href && c.linkLabel && (
-                      <a href={c.href} className="text-xs text-primary font-medium mt-1 inline-block hover:underline">
-                        {c.linkLabel} →
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ))}
+                </ScrollAnimation>
+              ))}
+            </div>
 
             <ScrollAnimation direction="left" delay={0.28}>
               <a
                 href="https://wa.me/91XXXXXXXXXX?text=Hello%20APS%20Services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-3 rounded-xl transition-colors"
+                className="flex items-center justify-center gap-2 w-full mt-6 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-3.5 transition-colors"
                 data-testid="whatsapp-contact"
               >
                 <MessageCircle className="h-4 w-4" />
@@ -129,40 +126,40 @@ export default function Contact() {
 
           {/* Right: form */}
           <ScrollAnimation direction="right" className="lg:col-span-3">
-            <div className="bg-card border rounded-2xl p-6 sm:p-8">
-              <h3 className="font-bold text-xl mb-1">Send us a message</h3>
+            <div className="border p-6 sm:p-8">
+              <h3 className="font-black text-xl mb-1">Send us a message</h3>
               <p className="text-muted-foreground text-sm mb-6">We usually respond within a few hours.</p>
 
               <form onSubmit={submit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label htmlFor="name" className="text-sm">Full Name <span className="text-destructive">*</span></Label>
+                    <Label htmlFor="name" className="text-xs font-semibold uppercase tracking-wide">Full Name <span className="text-destructive">*</span></Label>
                     <Input id="name" name="name" value={form.name} onChange={handle} required placeholder="Rahul Sharma" data-testid="input-name" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-sm">Email Address <span className="text-destructive">*</span></Label>
+                    <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wide">Email <span className="text-destructive">*</span></Label>
                     <Input id="email" name="email" type="email" value={form.email} onChange={handle} required placeholder="rahul@company.com" data-testid="input-email" />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label htmlFor="phone" className="text-sm">Phone Number</Label>
+                    <Label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wide">Phone</Label>
                     <Input id="phone" name="phone" value={form.phone} onChange={handle} placeholder="+91 98765 43210" data-testid="input-phone" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="company" className="text-sm">Company / Organization</Label>
+                    <Label htmlFor="company" className="text-xs font-semibold uppercase tracking-wide">Company</Label>
                     <Input id="company" name="company" value={form.company} onChange={handle} placeholder="Your company name" data-testid="input-company" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label htmlFor="service" className="text-sm">Service Required</Label>
+                  <Label htmlFor="service" className="text-xs font-semibold uppercase tracking-wide">Service Required</Label>
                   <Input id="service" name="service" value={form.service} onChange={handle} placeholder="e.g. Housekeeping, Security, Event Management" data-testid="input-service" />
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label htmlFor="message" className="text-sm">Message <span className="text-destructive">*</span></Label>
+                  <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wide">Message <span className="text-destructive">*</span></Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -175,7 +172,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full font-semibold" disabled={submitting} data-testid="submit-contact-form">
+                <Button type="submit" className="w-full font-semibold" size="lg" disabled={submitting} data-testid="submit-contact-form">
                   {submitting ? (
                     <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Sending...</>
                   ) : (

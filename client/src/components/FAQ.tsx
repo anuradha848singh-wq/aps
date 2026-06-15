@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { MessageCircle } from "lucide-react"
@@ -41,41 +40,60 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-muted/20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="faq" className="py-16 sm:py-24 border-t bg-muted/20">
+      <div className="container mx-auto px-6 sm:px-10">
 
-        <ScrollAnimation direction="up">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
-              FAQ
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Common <span className="text-primary">Questions</span>
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Everything you need to know before working with us.
-            </p>
-          </div>
-        </ScrollAnimation>
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start">
 
-        <div className="max-w-3xl mx-auto">
-          <ScrollAnimation direction="up" delay={0.1}>
-            <Accordion type="single" collapsible className="space-y-3">
+          {/* Left: header */}
+          <ScrollAnimation direction="left">
+            <div className="lg:sticky lg:top-24">
+              <div className="gold-label mb-4">FAQ</div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight mb-5">
+                Common Questions
+              </h2>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                Everything you need to know before working with us. Can't find the answer? Get in touch.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://wa.me/91XXXXXXXXXX?text=Hello%20APS%20Services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-3 transition-colors w-fit"
+                  data-testid="whatsapp-faq"
+                >
+                  <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+                </a>
+                <Button
+                  variant="outline"
+                  className="w-fit"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  Send a Message
+                </Button>
+              </div>
+            </div>
+          </ScrollAnimation>
+
+          {/* Right: accordion */}
+          <ScrollAnimation direction="right">
+            <Accordion type="single" collapsible className="divide-y border-t border-b">
               {faqs.map((faq, i) => (
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="border rounded-xl bg-card px-5 data-[state=open]:shadow-sm transition-shadow"
+                  className="border-none"
                   data-testid={`faq-item-${i}`}
                 >
                   <AccordionTrigger
-                    className="text-left text-sm font-semibold hover:text-primary transition-colors py-4 hover:no-underline"
+                    className="text-left text-sm font-semibold hover:text-primary transition-colors py-5 hover:no-underline"
                     data-testid={`faq-question-${i}`}
                   >
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent
-                    className="text-sm text-muted-foreground leading-relaxed pb-4"
+                    className="text-sm text-muted-foreground leading-relaxed pb-5"
                     data-testid={`faq-answer-${i}`}
                   >
                     {faq.a}
@@ -83,27 +101,6 @@ export default function FAQ() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </ScrollAnimation>
-
-          {/* CTA below FAQ */}
-          <ScrollAnimation direction="up" delay={0.2}>
-            <div className="mt-10 text-center p-6 rounded-2xl border bg-card">
-              <p className="font-semibold mb-1">Still have questions?</p>
-              <p className="text-sm text-muted-foreground mb-4">Our team is happy to help — reach out on WhatsApp or by filling in the contact form.</p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a
-                  href="https://wa.me/91XXXXXXXXXX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
-                >
-                  <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
-                </a>
-                <Button variant="outline" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
-                  Send a Message
-                </Button>
-              </div>
-            </div>
           </ScrollAnimation>
         </div>
       </div>

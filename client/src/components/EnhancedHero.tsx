@@ -1,180 +1,125 @@
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Shield, Phone, MessageCircle, ChevronDown, Star, CheckCircle } from "lucide-react"
+import { ArrowRight, Users, Building2, MapPin, Clock } from "lucide-react"
 import AnimatedCounter from "./AnimatedCounter"
 import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
 
+const stats = [
+  { icon: Users, value: 200, suffix: "+", label: "Trained Employees" },
+  { icon: Building2, value: 50, suffix: "+", label: "Corporate Clients" },
+  { icon: MapPin, value: 8, suffix: "+", label: "Years in Service" },
+  { icon: Clock, value: 24, suffix: "/7", label: "Support Services" },
+]
+
 export default function EnhancedHero() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const stats = [
-    { value: 8, suffix: "+", label: "Years Experience" },
-    { value: 50, suffix: "+", label: "Happy Clients" },
-    { value: 200, suffix: "+", label: "Trained Staff" },
-    { value: 24, suffix: "/7", label: "Support" },
-  ]
-
-  const highlights = [
-    "Housekeeping & Cleaning",
-    "Security Services",
-    "Event Management",
-    "Manpower Solutions",
-  ]
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden">
-      {/* Background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <img
-          src={heroImage}
-          alt="APS team of professionals"
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Multi-layer gradient for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-      </motion.div>
+    <section className="relative bg-background overflow-hidden">
+      {/* Split layout */}
+      <div className="grid lg:grid-cols-[55%_45%] min-h-[calc(100svh-4.5rem)]">
 
-      {/* Subtle animated orbs */}
-      <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl opacity-20 bg-primary"
-        animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 pb-20">
-        <div className="max-w-3xl">
-
-          {/* Trust badge */}
+        {/* Left: Content */}
+        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-16 xl:px-20 py-14 lg:py-0 order-2 lg:order-1">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex items-center gap-2 mb-5"
           >
-            <div className="flex items-center gap-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5">
-              <Shield className="h-3.5 w-3.5 text-primary" />
-              <span className="text-white/90 text-xs font-medium">Trusted Facility Management — Since 2016</span>
-            </div>
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-              ))}
+            <div className="gold-label mb-5 sm:mb-6">
+              Trusted Manpower Solutions
             </div>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.1] tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-foreground leading-[1.05] tracking-tight mb-5 sm:mb-6"
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
-            One-Stop Solution
+            Building Workforce.
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-              for Protection &amp;
-            </span>
-            <br />
-            <span className="text-white/95">Services</span>
+            <span className="text-foreground/90">Delivering</span>{" "}
+            <span className="text-primary">Excellence.</span>
           </motion.h1>
 
-          {/* Subtext */}
           <motion.p
-            className="text-base sm:text-lg text-white/80 mb-6 max-w-xl leading-relaxed"
+            className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-10 max-w-md"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
           >
-            APS delivers professional facility management across India — from housekeeping and security to event management and manpower.
+            APS Manpower Services is a leading provider of integrated manpower solutions across Security, Housekeeping, Facility Management and Staffing Services.
           </motion.p>
 
-          {/* Service pills */}
           <motion.div
-            className="flex flex-wrap gap-2 mb-8"
+            className="flex flex-wrap items-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            {highlights.map((h) => (
-              <span key={h} className="flex items-center gap-1.5 text-xs text-white/80 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 py-1">
-                <CheckCircle className="h-3 w-3 text-emerald-400 shrink-0" /> {h}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-wrap gap-3 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.75 }}
-          >
-            <Button
-              size="lg"
+            <button
+              onClick={() => scrollTo("services")}
+              className="inline-flex items-center gap-3 bg-foreground text-background font-semibold text-sm px-6 py-3.5 hover:bg-foreground/90 transition-colors group"
+              data-testid="cta-our-services"
+            >
+              Our Services
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
               onClick={() => scrollTo("contact")}
-              className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 border-0 font-semibold"
-              data-testid="cta-get-quote"
+              className="inline-flex items-center gap-3 text-foreground font-semibold text-sm border-b-2 border-foreground pb-0.5 hover:border-primary hover:text-primary transition-colors group"
+              data-testid="cta-contact"
             >
-              Get Free Quote
-            </Button>
-            <a
-              href="https://wa.me/91XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors shadow-lg"
-              data-testid="cta-whatsapp"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp
-            </a>
-            <a
-              href="tel:+91XXXXXXXXXX"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors"
-              data-testid="cta-call"
-            >
-              <Phone className="h-4 w-4" /> Call Now
-            </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-4 py-3 text-center hover:bg-white/15 transition-colors">
-                <div className="text-2xl sm:text-3xl font-bold text-white tabular-nums">
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-white/70 text-xs mt-0.5">{stat.label}</div>
-              </div>
-            ))}
+              Contact Us
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </button>
           </motion.div>
         </div>
+
+        {/* Right: Image */}
+        <motion.div
+          className="relative order-1 lg:order-2 h-60 sm:h-80 lg:h-auto"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img
+            src={heroImage}
+            alt="APS professional team"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Subtle vertical dots accent */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/50" />
+            ))}
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        onClick={() => scrollTo("services")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        data-testid="scroll-indicator"
+      {/* Stats bar */}
+      <motion.div
+        className="border-t bg-muted/30"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.7 }}
       >
-        <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
-        <ChevronDown className="h-4 w-4" />
-      </motion.button>
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-border">
+          {stats.map((stat, i) => (
+            <div key={i} className="flex items-center gap-3 sm:gap-4 px-5 sm:px-8 py-5 sm:py-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-primary/30 flex items-center justify-center shrink-0">
+                <stat.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl font-black text-foreground tabular-nums">
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-xs text-muted-foreground font-medium">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }

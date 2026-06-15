@@ -1,5 +1,4 @@
-import { Badge } from "@/components/ui/badge"
-import { Facebook, Twitter, Linkedin, MessageCircle, Phone, Mail, Share2 } from "lucide-react"
+import { Facebook, Twitter, Linkedin, MessageCircle, Phone, Mail, Share2, ArrowRight } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
 
 export default function SocialMediaShare() {
@@ -12,7 +11,6 @@ export default function SocialMediaShare() {
       label: "WhatsApp",
       sub: "Chat with us instantly",
       href: "https://wa.me/91XXXXXXXXXX?text=Hello%20APS%20Services",
-      color: "bg-green-600 hover:bg-green-700 text-white",
       external: true,
     },
     {
@@ -20,7 +18,6 @@ export default function SocialMediaShare() {
       label: "Call Us",
       sub: "+91 (XXX) XXX-XXXX",
       href: "tel:+91XXXXXXXXXX",
-      color: "bg-blue-600 hover:bg-blue-700 text-white",
       external: false,
     },
     {
@@ -28,7 +25,6 @@ export default function SocialMediaShare() {
       label: "Email Us",
       sub: "info@apsservices.com",
       href: "mailto:info@apsservices.com?subject=Inquiry about APS Services",
-      color: "bg-slate-700 hover:bg-slate-800 text-white",
       external: false,
     },
   ]
@@ -38,91 +34,84 @@ export default function SocialMediaShare() {
       icon: Facebook,
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-      color: "bg-[#1877F2]",
     },
     {
       icon: Twitter,
       label: "X / Twitter",
       href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
-      color: "bg-[#1DA1F2]",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-      color: "bg-[#0A66C2]",
     },
   ]
 
   return (
-    <section className="py-14 sm:py-20">
-      <div className="container mx-auto px-4 sm:px-6">
-        <ScrollAnimation direction="up">
-          <div className="text-center mb-10">
-            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
-              Reach Out
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-              Connect With <span className="text-primary">APS</span>
-            </h2>
-            <p className="text-muted-foreground text-sm max-w-md mx-auto">
-              Prefer WhatsApp? A quick call? An email? We're here on every channel.
-            </p>
-          </div>
-        </ScrollAnimation>
+    <section className="py-14 sm:py-20 border-t">
+      <div className="container mx-auto px-6 sm:px-10">
 
-        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-0 border-l border-t">
+
           {/* Contact */}
           <ScrollAnimation direction="left">
-            <div className="rounded-2xl border bg-card p-6">
-              <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
-                <Phone className="h-4 w-4 text-primary" /> Contact Us Directly
-              </h3>
-              <div className="space-y-2.5">
+            <div className="border-r border-b p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-5">
+                <Phone className="h-4 w-4 text-primary" />
+                <h3 className="font-bold text-sm">Contact Us Directly</h3>
+              </div>
+              <div className="space-y-0 border-t">
                 {contactChannels.map((c) => (
                   <a
                     key={c.label}
                     href={c.href}
                     target={c.external ? "_blank" : undefined}
                     rel={c.external ? "noopener noreferrer" : undefined}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${c.color}`}
+                    className="flex items-center justify-between py-4 border-b hover:text-primary transition-colors group"
                     data-testid={`contact-${c.label.toLowerCase().replace(/\s/g, "-")}`}
                   >
-                    <c.icon className="h-4 w-4 shrink-0" />
-                    <div>
-                      <div className="font-medium text-sm">{c.label}</div>
-                      <div className="text-xs opacity-80">{c.sub}</div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full border-2 border-border group-hover:border-primary/50 flex items-center justify-center transition-colors">
+                        <c.icon className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-sm">{c.label}</div>
+                        <div className="text-xs text-muted-foreground">{c.sub}</div>
+                      </div>
                     </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                   </a>
                 ))}
               </div>
-              <div className="mt-4 text-center">
-                <span className="text-xs text-muted-foreground bg-muted/60 border rounded-full px-3 py-1 inline-block">
-                  24/7 emergency support available
-                </span>
-              </div>
+              <p className="text-xs text-muted-foreground mt-4">24/7 emergency support available</p>
             </div>
           </ScrollAnimation>
 
           {/* Share */}
           <ScrollAnimation direction="right">
-            <div className="rounded-2xl border bg-card p-6">
-              <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
-                <Share2 className="h-4 w-4 text-primary" /> Share Our Services
-              </h3>
-              <p className="text-xs text-muted-foreground mb-4">
+            <div className="border-r border-b p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-2">
+                <Share2 className="h-4 w-4 text-primary" />
+                <h3 className="font-bold text-sm">Share Our Services</h3>
+              </div>
+              <p className="text-xs text-muted-foreground mb-5">
                 Know someone who needs professional facility management? Help them find us.
               </p>
-              <div className="space-y-2.5">
+              <div className="space-y-0 border-t">
                 {shareChannels.map((s) => (
                   <button
                     key={s.label}
                     onClick={() => window.open(s.href, "_blank", "width=600,height=400")}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-white transition-opacity hover:opacity-90 w-full text-left ${s.color}`}
+                    className="flex items-center justify-between py-4 border-b w-full text-left hover:text-primary transition-colors group"
                     data-testid={`share-${s.label.toLowerCase().replace(/[\s/]/g, "-")}`}
                   >
-                    <s.icon className="h-4 w-4 shrink-0" />
-                    <span className="font-medium text-sm">Share on {s.label}</span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full border-2 border-border group-hover:border-primary/50 flex items-center justify-center transition-colors">
+                        <s.icon className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <span className="font-bold text-sm">Share on {s.label}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                   </button>
                 ))}
               </div>

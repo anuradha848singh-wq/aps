@@ -1,48 +1,44 @@
-import { Badge } from "@/components/ui/badge"
 import { Eye, AlertTriangle, Zap, FileText, Phone, Search, Users, UserCheck, Settings, ShieldAlert } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
 
 const duties = [
-  { icon: Eye, title: "Be Visible", desc: "Maintain a presence throughout the facility at all times.", color: "text-blue-600 bg-blue-50 dark:bg-blue-950/40" },
-  { icon: AlertTriangle, title: "Stay Vigilant", desc: "Remain alert to security and safety risks at all times.", color: "text-orange-600 bg-orange-50 dark:bg-orange-950/40" },
-  { icon: Zap, title: "Rapid Response", desc: "Act immediately during emergencies or dangerous situations.", color: "text-red-600 bg-red-50 dark:bg-red-950/40" },
-  { icon: FileText, title: "Observe & Report", desc: "Monitor and document incidents or irregularities promptly.", color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40" },
-  { icon: Phone, title: "Coordinate Help", desc: "Liaise with emergency services and management as needed.", color: "text-purple-600 bg-purple-50 dark:bg-purple-950/40" },
-  { icon: Search, title: "Inspect & Monitor", desc: "Conduct regular facility and equipment inspections.", color: "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/40" },
-  { icon: Users, title: "Maintain Order", desc: "Ensure orderly conduct and manage crowds professionally.", color: "text-teal-600 bg-teal-50 dark:bg-teal-950/40" },
-  { icon: UserCheck, title: "Welcome Guests", desc: "Assist and guide visitors with professionalism and warmth.", color: "text-pink-600 bg-pink-50 dark:bg-pink-950/40" },
-  { icon: Settings, title: "Special Duties", desc: "Execute additional tasks assigned by facility management.", color: "text-yellow-600 bg-yellow-50 dark:bg-yellow-950/40" },
-  { icon: ShieldAlert, title: "Safety Guidance", desc: "Provide safety warnings and preventive tips proactively.", color: "text-cyan-600 bg-cyan-50 dark:bg-cyan-950/40" },
+  { icon: Eye, title: "Be Visible", desc: "Maintain a presence throughout the facility at all times." },
+  { icon: AlertTriangle, title: "Stay Vigilant", desc: "Remain alert to security and safety risks at all times." },
+  { icon: Zap, title: "Rapid Response", desc: "Act immediately during emergencies or dangerous situations." },
+  { icon: FileText, title: "Observe & Report", desc: "Monitor and document incidents or irregularities promptly." },
+  { icon: Phone, title: "Coordinate Help", desc: "Liaise with emergency services and management as needed." },
+  { icon: Search, title: "Inspect & Monitor", desc: "Conduct regular facility and equipment inspections." },
+  { icon: Users, title: "Maintain Order", desc: "Ensure orderly conduct and manage crowds professionally." },
+  { icon: UserCheck, title: "Welcome Guests", desc: "Assist and guide visitors with professionalism and warmth." },
+  { icon: Settings, title: "Special Duties", desc: "Execute additional tasks assigned by facility management." },
+  { icon: ShieldAlert, title: "Safety Guidance", desc: "Provide safety warnings and preventive tips proactively." },
 ]
 
 export default function CaretakerResponsibilities() {
   return (
-    <section id="caretaker-responsibilities" className="py-16 sm:py-24 bg-muted/20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="caretaker-responsibilities" className="py-16 sm:py-24 border-t bg-muted/20">
+      <div className="container mx-auto px-6 sm:px-10">
 
         <ScrollAnimation direction="up">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
-              Caretaker Duties
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              What Our <span className="text-primary">Caretakers Do Every Day</span>
+          <div className="mb-12 sm:mb-16">
+            <div className="gold-label mb-4">Caretaker Duties</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight max-w-xl">
+              What Our Caretakers Do Every Day
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Our caretakers are trained to a clear set of responsibilities — so you always know exactly what to expect.
-            </p>
           </div>
         </ScrollAnimation>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-0 border-l border-t mb-10">
           {duties.map((d, i) => (
-            <ScrollAnimation key={i} direction="up" delay={i * 0.05}>
-              <div className="flex flex-col items-center text-center p-4 rounded-2xl border bg-card hover-elevate">
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${d.color}`}>
-                  <d.icon className="h-5 w-5" />
+            <ScrollAnimation key={i} direction="up" delay={i * 0.04}>
+              <div className="border-r border-b p-5 sm:p-6 group hover:bg-background transition-colors text-center flex flex-col items-center">
+                <div className="w-10 h-10 rounded-full border-2 border-border group-hover:border-primary/50 flex items-center justify-center mb-3 transition-colors">
+                  <d.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
-                <div className="text-xs font-bold text-muted-foreground mb-1.5">{String(i + 1).padStart(2, "0")}</div>
-                <h3 className="font-semibold text-xs sm:text-sm leading-snug mb-1.5">{d.title}</h3>
+                <div className="text-xs font-bold text-primary/60 mb-1.5 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="font-bold text-xs sm:text-sm leading-snug mb-1.5">{d.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed hidden sm:block">{d.desc}</p>
               </div>
             </ScrollAnimation>
@@ -50,8 +46,8 @@ export default function CaretakerResponsibilities() {
         </div>
 
         <ScrollAnimation direction="up" delay={0.2}>
-          <div className="rounded-2xl bg-card border p-6 text-center">
-            <p className="font-semibold text-base mb-2">Professional Excellence, Every Shift</p>
+          <div className="border p-6 sm:p-8 text-center bg-background">
+            <p className="font-bold text-base mb-2">Professional Excellence, Every Shift</p>
             <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
               Each responsibility is carried out with precision, care, and a commitment to keeping your facility secure and running smoothly — day and night.
             </p>

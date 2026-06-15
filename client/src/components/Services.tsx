@@ -1,9 +1,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Brush, Shield, Calendar, Users, Building, Coffee, ArrowRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Brush, Shield, Calendar, Users, Building, Coffee, ChevronRight, X } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
 import housekeepingImage from "@assets/generated_images/Indian_APS_housekeeping_team_a0f857bb.png"
 import securityImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.png"
@@ -11,76 +9,52 @@ import eventImage from "@assets/generated_images/Indian_APS_event_management_645
 
 const services = [
   {
-    id: "housekeeping",
-    title: "Housekeeping & Cleaning",
-    shortDesc: "Spotless spaces, every day",
-    description: "Comprehensive cleaning and sanitization for offices, factories, malls, and residential complexes. Our trained housekeeping staff use professional equipment and eco-friendly products.",
-    icon: Brush,
-    image: housekeepingImage,
-    color: "from-blue-500/10 to-blue-600/5",
-    accent: "text-blue-600",
-    badge: "Most Popular",
-    features: ["Daily cleaning & sanitization", "Deep cleaning services", "Specialized floor care", "Waste management", "Eco-friendly products"],
-  },
-  {
     id: "security",
-    title: "Security & Caretaker",
-    shortDesc: "Vigilant protection 24/7",
-    description: "Professionally trained security personnel and caretakers to protect your assets, operations, and personnel. Available round-the-clock with emergency response protocols.",
+    title: "Security Services",
+    desc: "Trained security personnel for all types of premises and industries.",
     icon: Shield,
     image: securityImage,
-    color: "from-slate-500/10 to-slate-600/5",
-    accent: "text-slate-600",
-    badge: "24/7",
-    features: ["24/7 security monitoring", "Trained security guards", "Facility caretaking", "Emergency response", "Access control"],
+    features: ["24/7 security monitoring", "Trained security guards", "Access control", "Emergency response", "Facility caretaking"],
+  },
+  {
+    id: "housekeeping",
+    title: "Housekeeping Services",
+    desc: "Professional cleaning and hygiene solutions for every environment.",
+    icon: Brush,
+    image: housekeepingImage,
+    features: ["Daily cleaning & sanitization", "Deep cleaning", "Specialized floor care", "Waste management", "Eco-friendly products"],
+  },
+  {
+    id: "facility",
+    title: "Facility Management",
+    desc: "End-to-end facility management services to ensure smooth operations.",
+    icon: Building,
+    image: "",
+    features: ["Industrial maintenance", "Residential management", "M&E services", "Grounds keeping", "Facility optimization"],
+  },
+  {
+    id: "staffing",
+    title: "Staffing Solutions",
+    desc: "Flexible staffing solutions tailored to your business requirements.",
+    icon: Users,
+    image: "",
+    features: ["Temp & permanent staffing", "Skilled workforce", "Training programs", "HR & payroll", "Legal compliance"],
   },
   {
     id: "events",
     title: "Event Management",
-    shortDesc: "Flawless events, every time",
-    description: "End-to-end event planning and execution for corporate conferences, meetings, seminars, and private events. We handle logistics so you can focus on what matters.",
+    desc: "End-to-end event planning and execution for corporate events.",
     icon: Calendar,
     image: eventImage,
-    color: "from-purple-500/10 to-purple-600/5",
-    accent: "text-purple-600",
-    badge: "",
-    features: ["Corporate event planning", "Conference setup", "AV equipment management", "Catering coordination", "Post-event cleanup"],
-  },
-  {
-    id: "manpower",
-    title: "Manpower Solutions",
-    shortDesc: "Right people, right place",
-    description: "Skilled and unskilled workforce deployment for diverse operational needs. We handle hiring, training, compliance, and payroll management.",
-    icon: Users,
-    image: "",
-    color: "from-emerald-500/10 to-emerald-600/5",
-    accent: "text-emerald-600",
-    badge: "",
-    features: ["Temp & permanent staffing", "Skilled workforce", "Training programs", "HR & payroll", "Legal compliance"],
-  },
-  {
-    id: "facility",
-    title: "Industrial & Residential",
-    shortDesc: "Complete facility care",
-    description: "Specialized maintenance and management for factories, townships, offices, and residential complexes. We ensure smooth operations at every level.",
-    icon: Building,
-    image: "",
-    color: "from-orange-500/10 to-orange-600/5",
-    accent: "text-orange-600",
-    badge: "",
-    features: ["Industrial maintenance", "Residential management", "M&E services", "Grounds keeping", "Facility optimization"],
+    features: ["Corporate event planning", "Conference setup", "AV management", "Catering coordination", "Post-event cleanup"],
   },
   {
     id: "canteen",
     title: "Canteen & Pantry",
-    shortDesc: "Nourishing your workforce",
-    description: "Complete food service management for corporate and institutional facilities. From menu planning to kitchen operations, we ensure hygienic and nutritious meals.",
+    desc: "Complete food service management for corporate facilities.",
     icon: Coffee,
     image: "",
-    color: "from-amber-500/10 to-amber-600/5",
-    accent: "text-amber-600",
-    badge: "",
-    features: ["Menu planning", "Kitchen staff management", "Food safety & hygiene", "Inventory management", "Nutritional planning"],
+    features: ["Menu planning", "Kitchen staff", "Food safety", "Inventory management", "Nutritional planning"],
   },
 ]
 
@@ -88,125 +62,106 @@ export default function Services() {
   const [active, setActive] = useState<typeof services[0] | null>(null)
 
   return (
-    <section id="services" className="py-16 sm:py-24 bg-muted/20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="services" className="py-16 sm:py-24 border-t">
+      <div className="container mx-auto px-6 sm:px-10">
 
-        {/* Header */}
-        <ScrollAnimation direction="up">
-          <div className="text-center mb-12 sm:mb-16">
-            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
-              What We Do
-            </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Services Built Around <span className="text-primary">Your Needs</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
-              From daily housekeeping to complex facility management, we deliver consistent quality across every service we offer.
-            </p>
-          </div>
-        </ScrollAnimation>
-
-        {/* Service grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {services.map((service, index) => (
-            <ScrollAnimation key={service.id} delay={index * 0.07} direction="up">
-              <Card
-                className={`group cursor-pointer border hover-elevate transition-all duration-300 bg-gradient-to-br ${service.color} overflow-hidden`}
-                onClick={() => setActive(service)}
+        {/* Section header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <ScrollAnimation direction="up">
+            <div>
+              <div className="gold-label mb-3 sm:mb-4">What We Do</div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground tracking-tight leading-tight">
+                Our Services
+              </h2>
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation direction="up" delay={0.1}>
+            <div className="flex-1 max-w-xs sm:max-w-sm">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                Comprehensive manpower solutions designed to meet your business needs.
+              </p>
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary border-b-2 border-primary pb-0.5 hover:opacity-80 transition-opacity group"
               >
-                {/* Image if available */}
-                {service.image && (
-                  <div className="relative h-40 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                    {service.badge && (
-                      <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs">
-                        {service.badge}
-                      </Badge>
-                    )}
-                  </div>
-                )}
-                <CardContent className={`p-5 ${!service.image && service.badge ? "pt-4" : ""}`}>
-                  {!service.image && service.badge && (
-                    <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs" variant="outline">
-                      {service.badge}
-                    </Badge>
-                  )}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`p-2 rounded-lg bg-background shadow-sm ${service.accent} shrink-0`}>
-                      <service.icon className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-base leading-tight">{service.title}</h3>
-                      <p className={`text-xs mt-0.5 font-medium ${service.accent}`}>{service.shortDesc}</p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-                  </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{service.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mt-3">
-                    {service.features.slice(0, 3).map((f) => (
-                      <span key={f} className="text-xs bg-background/80 border rounded-full px-2 py-0.5 text-muted-foreground">{f}</span>
-                    ))}
-                    {service.features.length > 3 && (
-                      <span className="text-xs text-muted-foreground px-1">+{service.features.length - 3} more</span>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                View All Services
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </ScrollAnimation>
+        </div>
+
+        {/* Service cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t">
+          {services.map((s, i) => (
+            <ScrollAnimation key={s.id} delay={i * 0.06} direction="up">
+              <div
+                className="border-r border-b p-6 sm:p-7 cursor-pointer group hover:bg-muted/40 transition-colors relative"
+                onClick={() => setActive(s)}
+              >
+                {/* Icon */}
+                <div className="w-11 h-11 border-2 border-border group-hover:border-primary/50 rounded-full flex items-center justify-center mb-5 transition-colors">
+                  <s.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+
+                <h3 className="font-bold text-base text-foreground mb-2 leading-tight">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
+
+                <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+
+                {/* Always visible arrow at bottom */}
+                <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6">
+                  <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                </div>
+              </div>
             </ScrollAnimation>
           ))}
         </div>
       </div>
 
-      {/* Service detail modal */}
+      {/* Detail panel */}
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActive(null)}
           >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
             <motion.div
-              className="relative bg-background w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90svh] overflow-y-auto"
+              className="relative bg-background w-full sm:max-w-md rounded-t-2xl sm:rounded-xl shadow-2xl overflow-hidden max-h-[88svh] overflow-y-auto"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "100%", opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              transition={{ type: "spring", damping: 28, stiffness: 320 }}
               onClick={(e) => e.stopPropagation()}
             >
               {active.image && (
-                <div className="relative h-48">
+                <div className="h-44 overflow-hidden">
                   <img src={active.image} alt={active.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                 </div>
               )}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2.5 rounded-xl bg-muted ${active.accent}`}>
-                      <active.icon className="h-5 w-5" />
+                    <div className="w-10 h-10 border-2 border-primary/30 rounded-full flex items-center justify-center">
+                      <active.icon className="h-4 w-4 text-primary" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-xl">{active.title}</h3>
-                      <p className={`text-sm font-medium ${active.accent}`}>{active.shortDesc}</p>
-                    </div>
+                    <h3 className="font-black text-lg">{active.title}</h3>
                   </div>
-                  <Button size="icon" variant="ghost" className="shrink-0" onClick={() => setActive(null)}>
+                  <Button size="icon" variant="ghost" onClick={() => setActive(null)}>
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">{active.description}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-5">{active.desc}</p>
                 <div className="space-y-2 mb-6">
-                  <p className="text-sm font-semibold">What's Included</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Includes</p>
                   {active.features.map((f) => (
-                    <div key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div key={f} className="flex items-center gap-2.5 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                       {f}
                     </div>
@@ -214,12 +169,9 @@ export default function Services() {
                 </div>
                 <Button
                   className="w-full"
-                  onClick={() => {
-                    setActive(null)
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                  }}
+                  onClick={() => { setActive(null); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) }}
                 >
-                  Request This Service
+                  Request This Service <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </div>
             </motion.div>
