@@ -1,139 +1,62 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { 
-  Eye, 
-  AlertTriangle, 
-  Zap, 
-  FileText, 
-  Phone, 
-  Search, 
-  Users, 
-  UserCheck, 
-  Settings, 
-  ShieldAlert 
-} from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Eye, AlertTriangle, Zap, FileText, Phone, Search, Users, UserCheck, Settings, ShieldAlert } from "lucide-react"
+import ScrollAnimation from "./ScrollAnimation"
+
+const duties = [
+  { icon: Eye, title: "Be Visible", desc: "Maintain a presence throughout the facility at all times.", color: "text-blue-600 bg-blue-50 dark:bg-blue-950/40" },
+  { icon: AlertTriangle, title: "Stay Vigilant", desc: "Remain alert to security and safety risks at all times.", color: "text-orange-600 bg-orange-50 dark:bg-orange-950/40" },
+  { icon: Zap, title: "Rapid Response", desc: "Act immediately during emergencies or dangerous situations.", color: "text-red-600 bg-red-50 dark:bg-red-950/40" },
+  { icon: FileText, title: "Observe & Report", desc: "Monitor and document incidents or irregularities promptly.", color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40" },
+  { icon: Phone, title: "Coordinate Help", desc: "Liaise with emergency services and management as needed.", color: "text-purple-600 bg-purple-50 dark:bg-purple-950/40" },
+  { icon: Search, title: "Inspect & Monitor", desc: "Conduct regular facility and equipment inspections.", color: "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/40" },
+  { icon: Users, title: "Maintain Order", desc: "Ensure orderly conduct and manage crowds professionally.", color: "text-teal-600 bg-teal-50 dark:bg-teal-950/40" },
+  { icon: UserCheck, title: "Welcome Guests", desc: "Assist and guide visitors with professionalism and warmth.", color: "text-pink-600 bg-pink-50 dark:bg-pink-950/40" },
+  { icon: Settings, title: "Special Duties", desc: "Execute additional tasks assigned by facility management.", color: "text-yellow-600 bg-yellow-50 dark:bg-yellow-950/40" },
+  { icon: ShieldAlert, title: "Safety Guidance", desc: "Provide safety warnings and preventive tips proactively.", color: "text-cyan-600 bg-cyan-50 dark:bg-cyan-950/40" },
+]
 
 export default function CaretakerResponsibilities() {
-  const responsibilities = [
-    {
-      id: 1,
-      title: "To be visible",
-      description: "Maintain visible presence throughout the facility to ensure security and assistance availability",
-      icon: Eye,
-      color: "bg-blue-500/10 text-blue-600"
-    },
-    {
-      id: 2, 
-      title: "To be vigilant",
-      description: "Stay alert and watchful at all times to identify potential security or safety concerns",
-      icon: AlertTriangle,
-      color: "bg-orange-500/10 text-orange-600"
-    },
-    {
-      id: 3,
-      title: "To respond quickly in dangerous situations", 
-      description: "Provide immediate response and assistance during emergency or hazardous situations",
-      icon: Zap,
-      color: "bg-red-500/10 text-red-600"
-    },
-    {
-      id: 4,
-      title: "Observing and reporting",
-      description: "Monitor facility activities and report incidents, irregularities, or concerns to management",
-      icon: FileText,
-      color: "bg-green-500/10 text-green-600"
-    },
-    {
-      id: 5,
-      title: "Getting help",
-      description: "Coordinate with emergency services and management to obtain necessary assistance when required",
-      icon: Phone,
-      color: "bg-purple-500/10 text-purple-600"
-    },
-    {
-      id: 6,
-      title: "Checking and monitoring",
-      description: "Conduct regular facility inspections and monitor security systems and equipment",
-      icon: Search,
-      color: "bg-indigo-500/10 text-indigo-600"
-    },
-    {
-      id: 7,
-      title: "Maintaining order among people",
-      description: "Ensure orderly conduct and manage crowd control in common areas and during events",
-      icon: Users,
-      color: "bg-teal-500/10 text-teal-600"
-    },
-    {
-      id: 8,
-      title: "Receiving guests and taking care of them",
-      description: "Provide professional assistance and guidance to visitors and guests",
-      icon: UserCheck,
-      color: "bg-pink-500/10 text-pink-600"
-    },
-    {
-      id: 9,
-      title: "Performing other special duties",
-      description: "Execute additional tasks and responsibilities as assigned by management",
-      icon: Settings,
-      color: "bg-yellow-500/10 text-yellow-600"
-    },
-    {
-      id: 10,
-      title: "Offer safety warnings and tips",
-      description: "Provide safety guidance and preventive measures to ensure a secure environment",
-      icon: ShieldAlert,
-      color: "bg-emerald-500/10 text-emerald-600"
-    }
-  ]
-
   return (
-    <section id="caretaker-responsibilities" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Caretaker <span className="text-primary">Responsibilities</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our caretakers are trained professionals committed to providing comprehensive 
-            security and facility management services with the highest standards.
-          </p>
-        </div>
+    <section id="caretaker-responsibilities" className="py-16 sm:py-24 bg-muted/20">
+      <div className="container mx-auto px-4 sm:px-6">
 
-        {/* Responsibilities Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
-          {responsibilities.map((responsibility, index) => (
-            <Card key={responsibility.id} className="group hover-elevate transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 ${responsibility.color}`}>
-                  <responsibility.icon className="h-6 w-6" />
+        <ScrollAnimation direction="up">
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4 px-4 py-1.5 text-xs font-medium tracking-wide uppercase bg-primary/5 text-primary border-primary/20">
+              Caretaker Duties
+            </Badge>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+              What Our <span className="text-primary">Caretakers Do Every Day</span>
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
+              Our caretakers are trained to a clear set of responsibilities — so you always know exactly what to expect.
+            </p>
+          </div>
+        </ScrollAnimation>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-10">
+          {duties.map((d, i) => (
+            <ScrollAnimation key={i} direction="up" delay={i * 0.05}>
+              <div className="flex flex-col items-center text-center p-4 rounded-2xl border bg-card hover-elevate">
+                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${d.color}`}>
+                  <d.icon className="h-5 w-5" />
                 </div>
-                <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold mb-3">
-                  {responsibility.id}
-                </div>
-                <h3 className="font-semibold mb-3 leading-tight">
-                  {responsibility.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {responsibility.description}
-                </p>
-              </CardContent>
-            </Card>
+                <div className="text-xs font-bold text-muted-foreground mb-1.5">{String(i + 1).padStart(2, "0")}</div>
+                <h3 className="font-semibold text-xs sm:text-sm leading-snug mb-1.5">{d.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed hidden sm:block">{d.desc}</p>
+              </div>
+            </ScrollAnimation>
           ))}
         </div>
 
-        {/* Summary Card */}
-        <Card className="bg-gradient-to-r from-primary/5 to-chart-2/5 border-primary/20 hover-elevate">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-semibold mb-4">
-              Professional <span className="text-primary">Excellence</span>
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our caretakers embody our commitment to professional service delivery, 
-              ensuring your facility operates smoothly and securely at all times. 
-              Each responsibility is executed with precision and care.
+        <ScrollAnimation direction="up" delay={0.2}>
+          <div className="rounded-2xl bg-card border p-6 text-center">
+            <p className="font-semibold text-base mb-2">Professional Excellence, Every Shift</p>
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+              Each responsibility is carried out with precision, care, and a commitment to keeping your facility secure and running smoothly — day and night.
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </ScrollAnimation>
       </div>
     </section>
   )

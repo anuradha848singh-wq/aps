@@ -1,230 +1,180 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Shield, Phone, MessageCircle, ChevronDown } from "lucide-react"
+import { Shield, Phone, MessageCircle, ChevronDown, Star, CheckCircle } from "lucide-react"
 import AnimatedCounter from "./AnimatedCounter"
-import ScrollAnimation from "./ScrollAnimation"
 import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
 
 export default function EnhancedHero() {
-  const scrollToServices = () => {
-    const element = document.getElementById("services")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+  const stats = [
+    { value: 8, suffix: "+", label: "Years Experience" },
+    { value: 50, suffix: "+", label: "Happy Clients" },
+    { value: 200, suffix: "+", label: "Trained Staff" },
+    { value: 24, suffix: "/7", label: "Support" },
+  ]
 
-  const openWhatsApp = () => {
-    // TODO: Replace with actual WhatsApp number
-    window.open("https://wa.me/1234567890", "_blank")
-  }
-
-  const makeCall = () => {
-    // TODO: Replace with actual phone number
-    window.location.href = "tel:+1234567890"
-  }
+  const highlights = [
+    "Housekeeping & Cleaning",
+    "Security Services",
+    "Event Management",
+    "Manpower Solutions",
+  ]
 
   return (
-    <section className="relative min-h-[95vh] flex items-center overflow-hidden">
-      {/* Animated Background */}
-      <motion.div 
+    <section className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden">
+      {/* Background */}
+      <motion.div
         className="absolute inset-0 z-0"
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <img 
+        <img
           src={heroImage}
-          alt="Indian APS facility management team"
-          className="w-full h-full object-cover"
+          alt="APS team of professionals"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        {/* Multi-layer gradient for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
       </motion.div>
-      
-      {/* Floating Elements */}
+
+      {/* Subtle animated orbs */}
       <motion.div
-        className="absolute top-20 right-10 w-20 h-20 bg-primary/20 rounded-full blur-xl"
-        animate={{ 
-          x: [0, 30, 0], 
-          y: [0, -20, 0],
-          scale: [1, 1.2, 1]
-        }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
+        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl opacity-20 bg-primary"
+        animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="absolute bottom-40 left-10 w-16 h-16 bg-chart-2/20 rounded-full blur-xl"
-        animate={{ 
-          x: [0, -25, 0], 
-          y: [0, 15, 0],
-          scale: [1, 0.8, 1]
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-      
+
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 pb-20">
+        <div className="max-w-3xl">
+
+          {/* Trust badge */}
           <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex items-center gap-2 mb-5"
+          >
+            <div className="flex items-center gap-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5">
+              <Shield className="h-3.5 w-3.5 text-primary" />
+              <span className="text-white/90 text-xs font-medium">Trusted Facility Management — Since 2016</span>
+            </div>
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.1] tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
           >
-            <Badge variant="outline" className="mb-6 bg-white/10 backdrop-blur-sm border-white/20 text-white hover-elevate">
-              <Shield className="w-4 h-4 mr-2" />
-              Professional Facility Management
-            </Badge>
-          </motion.div>
-          
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            Assistance Protection 
-            <motion.span 
-              className="block"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2">
-                and Services
-              </span>
-            </motion.span>
+            One-Stop Solution
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+              for Protection &amp;
+            </span>
+            <br />
+            <span className="text-white/95">Services</span>
           </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
+
+          {/* Subtext */}
+          <motion.p
+            className="text-base sm:text-lg text-white/80 mb-6 max-w-xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
           >
-            One-stop solution for protection and services. Professional facility management 
-            with Indian expertise, serving <span className="text-primary font-semibold">50+ clients</span> with 
-            <span className="text-chart-2 font-semibold"> 200+ trained employees</span> across India.
+            APS delivers professional facility management across India — from housekeeping and security to event management and manpower.
           </motion.p>
-          
-          {/* Enhanced CTA Buttons */}
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 mb-12"
+
+          {/* Service pills */}
+          <motion.div
+            className="flex flex-wrap gap-2 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+          >
+            {highlights.map((h) => (
+              <span key={h} className="flex items-center gap-1.5 text-xs text-white/80 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 py-1">
+                <CheckCircle className="h-3 w-3 text-emerald-400 shrink-0" /> {h}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            className="flex flex-wrap gap-3 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.75 }}
+          >
+            <Button
+              size="lg"
+              onClick={() => scrollTo("contact")}
+              className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 border-0 font-semibold"
+              data-testid="cta-get-quote"
+            >
+              Get Free Quote
+            </Button>
+            <a
+              href="https://wa.me/91XXXXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors shadow-lg"
+              data-testid="cta-whatsapp"
+            >
+              <MessageCircle className="h-4 w-4" /> WhatsApp
+            </a>
+            <a
+              href="tel:+91XXXXXXXXXX"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors"
+              data-testid="cta-call"
+            >
+              <Phone className="h-4 w-4" /> Call Now
+            </a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                onClick={scrollToContact}
-                className="bg-gradient-to-r from-primary to-chart-2 hover:from-primary/90 hover:to-chart-2/90 text-white border-0 shadow-2xl"
-                data-testid="cta-get-quote"
-              >
-                Get Free Quote
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                onClick={openWhatsApp}
-                className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 shadow-xl"
-                data-testid="cta-whatsapp"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button 
-                size="lg" 
-                variant="outline"
-                onClick={makeCall}
-                className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 shadow-xl"
-                data-testid="cta-call"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now
-              </Button>
-            </motion.div>
-          </motion.div>
-          
-          {/* Enhanced Statistics */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.4 }}
-          >
-            <motion.div 
-              className="text-center group"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                <AnimatedCounter end={8} suffix="+" />
+            {stats.map((stat, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-4 py-3 text-center hover:bg-white/15 transition-colors">
+                <div className="text-2xl sm:text-3xl font-bold text-white tabular-nums">
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-white/70 text-xs mt-0.5">{stat.label}</div>
               </div>
-              <div className="text-white/80 group-hover:text-white transition-colors">Years Experience</div>
-            </motion.div>
-            <motion.div 
-              className="text-center group"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-chart-2 transition-colors">
-                <AnimatedCounter end={50} suffix="+" />
-              </div>
-              <div className="text-white/80 group-hover:text-white transition-colors">Clients Served</div>
-            </motion.div>
-            <motion.div 
-              className="text-center group"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-chart-3 transition-colors">
-                <AnimatedCounter end={200} suffix="+" />
-              </div>
-              <div className="text-white/80 group-hover:text-white transition-colors">Employees Trained</div>
-            </motion.div>
-            <motion.div 
-              className="text-center group"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                <AnimatedCounter end={24} suffix="/7" />
-              </div>
-              <div className="text-white/80 group-hover:text-white transition-colors">Available</div>
-            </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 cursor-pointer"
-        onClick={scrollToServices}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        whileHover={{ scale: 1.1 }}
+      {/* Scroll indicator */}
+      <motion.button
+        onClick={() => scrollTo("services")}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         data-testid="scroll-indicator"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium">Scroll to explore</span>
-          <ChevronDown className="w-5 h-5" />
-        </div>
-      </motion.div>
+        <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
+        <ChevronDown className="h-4 w-4" />
+      </motion.button>
     </section>
   )
 }
