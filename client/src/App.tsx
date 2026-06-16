@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import EnhancedNavigation from "@/components/EnhancedNavigation";
 import EnhancedHero from "@/components/EnhancedHero";
 import Services from "@/components/Services";
+import TeamPhotos from "@/components/TeamPhotos";
 import About from "@/components/About";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Training from "@/components/Training";
@@ -27,6 +28,7 @@ function HomePage() {
       <main>
         <EnhancedHero />
         <Services />
+        <TeamPhotos />
         <WhyChooseUs />
         <About />
         <Training />
