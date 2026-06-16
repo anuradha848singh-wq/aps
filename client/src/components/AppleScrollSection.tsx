@@ -133,15 +133,8 @@ export default function AppleScrollSection() {
   // 400vh container gives enough room to scroll through 4 horizontal panels.
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  // Add buttery smooth spring physics to the scroll
-  const smoothScrollY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  // Map smooth vertical scroll (0 -> 1) to horizontal translation (0% -> -75%)
-  const x = useTransform(smoothScrollY, [0, 1], ["0%", "-75%"]);
+  // Map vertical scroll (0 -> 1) to horizontal translation (0% -> -75%)
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   const scrollToContact = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
@@ -258,22 +251,19 @@ export default function AppleScrollSection() {
         {servicePairs.map((pair) => (
           <div key={pair.id + '-mobile'} className="px-5 flex flex-col gap-10">
             {/* Mobile Header / Typography */}
-            <ScrollAnimation direction="up">
-              <div className="flex flex-col gap-2 relative">
-                <span className={`text-[12vw] font-black uppercase opacity-10 bg-clip-text text-transparent bg-gradient-to-br ${pair.color} leading-none tracking-tighter absolute -top-8 -left-2 z-0`}>
-                  {pair.label}
-                </span>
-                <div className="relative z-10 flex flex-col gap-8 mt-6">
-                  <AnimatedTextBlock service={pair.service1} />
-                  <div className="h-px w-24 bg-primary/30" />
-                  <AnimatedTextBlock service={pair.service2} />
-                </div>
+            <div className="flex flex-col gap-2 relative">
+              <span className={`text-[12vw] font-black uppercase opacity-10 bg-clip-text text-transparent bg-gradient-to-br ${pair.color} leading-none tracking-tighter absolute -top-8 -left-2 z-0`}>
+                {pair.label}
+              </span>
+              <div className="relative z-10 flex flex-col gap-8 mt-6">
+                <AnimatedTextBlock service={pair.service1} />
+                <div className="h-px w-24 bg-primary/30" />
+                <AnimatedTextBlock service={pair.service2} />
               </div>
-            </ScrollAnimation>
+            </div>
 
             {/* Mobile Image Grid */}
-            <ScrollAnimation direction="up" delay={0.1}>
-              <div className="relative w-full aspect-[3/4] rounded-[2rem] bg-background/60 border border-border/50 shadow-xl overflow-hidden flex flex-col p-4 gap-3">
+            <div className="relative w-full aspect-[3/4] rounded-[2rem] bg-background/60 border border-border/50 shadow-xl overflow-hidden flex flex-col p-4 gap-3">
               <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br ${pair.color} rounded-full blur-[80px] opacity-15`} />
               
               <div className="relative flex-1 flex flex-col gap-3 overflow-hidden rounded-2xl">
@@ -303,17 +293,14 @@ export default function AppleScrollSection() {
                 </div>
               </div>
             </div>
-            </ScrollAnimation>
 
             {/* Mobile Deploy Button */}
-            <ScrollAnimation direction="up" delay={0.2}>
-              <button 
-                onClick={scrollToContact}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-xl hover:bg-primary transition-colors shadow-lg"
-              >
-                Deploy Service <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </ScrollAnimation>
+            <button 
+              onClick={scrollToContact}
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-xl hover:bg-primary transition-colors shadow-lg"
+            >
+              Deploy Service <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
           </div>
         ))}
       </section>
