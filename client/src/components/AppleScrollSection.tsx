@@ -1,4 +1,17 @@
 import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { 
+  Building, 
+  CheckCircle2, 
+  Star, 
+  ShieldCheck, 
+  Crosshair, 
+  Activity, 
+  Users, 
+  ClipboardCheck, 
+  Cpu, 
+  ArrowRight 
+} from "lucide-react";
 // Proper Vite asset imports
 import facilityImage from "@assets/social_facility.webp";
 import housekeepingImage from "@assets/social_housekeeping.webp";
@@ -13,7 +26,7 @@ import hospitalStaffImage from "@assets/aps_hospital_staff.webp";
 import caretakerImage from "@assets/social_caretaker.webp";
 
 // Combine the textual content with image/bento visual data
-const servicePairs = [
+const servicePairs: any[] = [
   {
     id: "group-1",
     label: "MAINTENANCE",
