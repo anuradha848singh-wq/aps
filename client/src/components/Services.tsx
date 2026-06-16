@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Brush, Shield, Calendar, Users, Building, Coffee, ArrowRight, X } from "lucide-react"
+import { Brush, Shield, Calendar, Users, Building, Coffee, Heart, UserCheck, ArrowRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ScrollAnimation from "./ScrollAnimation"
 import housekeepingImage from "@assets/generated_images/Indian_APS_housekeeping_team_a0f857bb.png"
@@ -9,52 +9,68 @@ import eventImage from "@assets/generated_images/Indian_APS_event_management_645
 
 const services = [
   {
-    id: "security",
-    title: "Security Services",
-    desc: "Trained security personnel for all types of premises and industries.",
-    icon: Shield,
-    image: securityImage,
-    features: ["24/7 security monitoring", "Trained security guards", "Access control", "Emergency response", "Facility caretaking"],
-  },
-  {
     id: "housekeeping",
-    title: "Housekeeping Services",
-    desc: "Professional cleaning and hygiene solutions for every environment.",
+    title: "Housekeeping & Cleaning",
+    desc: "Professional cleaning and hygiene solutions for offices, hospitals, malls, factories and residences.",
     icon: Brush,
     image: housekeepingImage,
-    features: ["Daily cleaning & sanitization", "Deep cleaning", "Specialized floor care", "Waste management", "Eco-friendly products"],
+    features: ["Daily cleaning & sanitisation", "Deep cleaning services", "Specialised floor care", "Waste management", "Eco-friendly products"],
   },
   {
-    id: "facility",
-    title: "Facility Management",
-    desc: "End-to-end facility management services to ensure smooth operations.",
+    id: "industrial",
+    title: "Industrial Facility Management",
+    desc: "End-to-end facility services for factories, commercial establishments and large-scale operations.",
     icon: Building,
     image: "",
-    features: ["Industrial maintenance", "Residential management", "M&E services", "Grounds keeping", "Facility optimization"],
+    features: ["Industrial maintenance", "Grounds keeping", "M&E services", "Facility optimisation", "Compliance management"],
   },
   {
-    id: "staffing",
-    title: "Staffing Solutions",
-    desc: "Flexible staffing solutions tailored to your business requirements.",
-    icon: Users,
+    id: "security",
+    title: "Security Guard / Bouncer",
+    desc: "Trained, uniformed security personnel for premises protection and event crowd management.",
+    icon: Shield,
+    image: securityImage,
+    features: ["24/7 security monitoring", "Trained & verified guards", "Access control", "Emergency response", "Event security"],
+  },
+  {
+    id: "supervisor",
+    title: "Supervisor & Gunman",
+    desc: "Experienced supervisors and licensed armed guards deployed as per your specific requirement.",
+    icon: UserCheck,
     image: "",
-    features: ["Temp & permanent staffing", "Skilled workforce", "Training programs", "HR & payroll", "Legal compliance"],
-  },
-  {
-    id: "events",
-    title: "Event Management",
-    desc: "End-to-end event planning and execution for corporate events.",
-    icon: Calendar,
-    image: eventImage,
-    features: ["Corporate event planning", "Conference setup", "AV management", "Catering coordination", "Post-event cleanup"],
+    features: ["Licensed gunmen", "Supervisory staff", "Shift management", "Incident reporting", "Team leadership"],
   },
   {
     id: "canteen",
     title: "Canteen & Pantry",
-    desc: "Complete food service management for corporate facilities.",
+    desc: "Fully managed canteen and pantry services for corporate clients and industrial facilities.",
     icon: Coffee,
     image: "",
-    features: ["Menu planning", "Kitchen staff", "Food safety", "Inventory management", "Nutritional planning"],
+    features: ["Menu planning", "Kitchen staff supply", "Food safety compliance", "Inventory management", "Nutritional catering"],
+  },
+  {
+    id: "events",
+    title: "Event Management Support",
+    desc: "Reliable manpower support for corporate events, conferences, exhibitions and public gatherings.",
+    icon: Calendar,
+    image: eventImage,
+    features: ["Setup & breakdown crew", "Ushering & coordination", "AV & logistics support", "Catering coordination", "Post-event cleanup"],
+  },
+  {
+    id: "hospital",
+    title: "Hospital & Healthcare",
+    desc: "Trained hospital attendants, patient support staff and biohazard waste handling professionals.",
+    icon: Heart,
+    image: "",
+    features: ["Ward attendants", "Patient assistance", "Biohazard waste handling", "OT support staff", "Hygiene compliance"],
+  },
+  {
+    id: "caretaker",
+    title: "Caretaker Outsourcing",
+    desc: "Dedicated, trained caretakers for townships, residential complexes and commercial premises.",
+    icon: Users,
+    image: "",
+    features: ["Residential caretaking", "Township management", "Common area upkeep", "Tenant coordination", "24/7 availability"],
   },
 ]
 
@@ -63,7 +79,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 sm:py-24 border-t">
-      <div className="container mx-auto px-6 sm:px-10">
+      <div className="container mx-auto px-5 sm:px-10">
 
         {/* Section header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
@@ -76,52 +92,48 @@ export default function Services() {
             </div>
           </ScrollAnimation>
           <ScrollAnimation direction="up" delay={0.1}>
-            <div className="flex-1 max-w-xs sm:max-w-sm">
+            <div className="flex-1 max-w-sm">
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                Comprehensive manpower solutions designed to meet your business needs.
+                Comprehensive facility management and manpower solutions — designed for factories, malls, offices, hospitals and residences across Indore and MP.
               </p>
               <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary border-b-2 border-primary pb-0.5 hover:opacity-80 transition-opacity group"
               >
-                View All Services
+                Request a Service
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </ScrollAnimation>
         </div>
 
-        {/* Service cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t">
+        {/* 8-card grid: 2 cols mobile, 4 cols desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t">
           {services.map((s, i) => (
-            <ScrollAnimation key={s.id} delay={i * 0.06} direction="up">
+            <ScrollAnimation key={s.id} delay={i * 0.05} direction="up">
               <div
-                className="border-r border-b p-6 sm:p-7 cursor-pointer group hover:bg-muted/40 transition-colors relative"
+                className="border-r border-b p-4 sm:p-6 lg:p-7 cursor-pointer group hover:bg-muted/40 transition-colors relative min-h-[160px] sm:min-h-[200px]"
                 onClick={() => setActive(s)}
               >
-                {/* Icon */}
-                <div className="w-11 h-11 border-2 border-border group-hover:border-primary/50 rounded-full flex items-center justify-center mb-5 transition-colors">
-                  <s.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-border group-hover:border-primary/50 rounded-full flex items-center justify-center mb-3 sm:mb-5 transition-colors">
+                  <s.icon className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
-
-                <h3 className="font-bold text-base text-foreground mb-2 leading-tight">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
-
-                <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-
-                {/* Always visible arrow at bottom */}
-                <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6">
-                  <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                <h3 className="font-bold text-sm sm:text-base text-foreground mb-1.5 sm:mb-2 leading-tight">{s.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed hidden sm:block">{s.desc}</p>
+                <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
+                  <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
             </ScrollAnimation>
           ))}
         </div>
+
+        <p className="text-center text-xs text-muted-foreground mt-4">
+          Tap any service card for details
+        </p>
       </div>
 
-      {/* Detail panel */}
+      {/* Detail sheet */}
       <AnimatePresence>
         {active && (
           <motion.div
@@ -159,7 +171,7 @@ export default function Services() {
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-5">{active.desc}</p>
                 <div className="space-y-2 mb-6">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Includes</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">What's Included</p>
                   {active.features.map((f) => (
                     <div key={f} className="flex items-center gap-2.5 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />

@@ -8,13 +8,12 @@ import EnhancedNavigation from "@/components/EnhancedNavigation";
 import EnhancedHero from "@/components/EnhancedHero";
 import Services from "@/components/Services";
 import About from "@/components/About";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Training from "@/components/Training";
 import CustomerSatisfaction from "@/components/CustomerSatisfaction";
 import CaretakerResponsibilities from "@/components/CaretakerResponsibilities";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import SocialMediaShare from "@/components/SocialMediaShare";
-import ParallaxSection from "@/components/ParallaxSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingQuoteButton from "@/components/FloatingQuoteButton";
@@ -28,14 +27,13 @@ function HomePage() {
       <main>
         <EnhancedHero />
         <Services />
-        <ParallaxSection />
+        <WhyChooseUs />
         <About />
         <Training />
         <CustomerSatisfaction />
         <CaretakerResponsibilities />
         <Testimonials />
         <FAQ />
-        <SocialMediaShare />
         <Contact />
       </main>
       <FloatingQuoteButton />
@@ -49,7 +47,6 @@ function Router() {
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/admin" component={AdminPage} />
-      {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
   );

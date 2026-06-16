@@ -1,0 +1,274 @@
+Here's a detailed content prompt covering all sections + a functional Contact Us setup:
+
+---
+
+## 🏠 HERO SECTION
+
+```
+Company Name: ASSISTANCE PROTECTION AND SERVICES
+Tagline: "All Manpower Provide"
+Sub-tagline: "Your One-Stop Facility Management Partner in Indore"
+CTA Buttons: "Get a Quote" | "Contact Us"
+Background: Professional facility/housekeeping team visual
+```
+
+---
+
+## 📋 ABOUT US SECTION
+
+```
+Heading: Who We Are
+
+Body:
+Assistance Protection and Services (APS) is a highly specialized facility 
+management and manpower solutions provider based in Indore, Madhya Pradesh. 
+We serve clients across industrial sectors including factories, malls, 
+townships, hospitals, offices, and residences.
+
+Our "beyond in brief" approach keeps customer satisfaction at the core of 
+everything we do — delivering impeccable service within agreed timeframes 
+for both government and private organizations.
+
+Stats to highlight (use counter cards):
+- "500+" Trained Manpower
+- "100+" Clients Served  
+- "10+" Years of Trust
+- "24/7" Support Available
+```
+
+---
+
+## 🎯 VISION / MISSION / VALUES
+
+```
+Vision:
+"To become the leading professional manpower provider in the industry by 
+surpassing customer expectations and fostering strong client-agency 
+partnerships while valuing each employee."
+
+Mission:
+"To provide high-quality, value-based facility services at affordable costs, 
+continuously training our frontline executives to deliver excellence as a 
+one-stop solution provider."
+
+Values (icon cards):
+1. 🤝 Customer First — Satisfaction at the core of every decision
+2. 🏆 Excellence — Professionally trained, highly motivated teams
+3. ⚡ Reliability — Swift action, always within agreed timeframes
+4. 🔄 Continuous Improvement — Regular audits and proactive feedback
+```
+
+---
+
+## 🛠️ SERVICES SECTION
+
+```
+Heading: Our Services
+Sub: Comprehensive facility and manpower solutions for every need
+
+Service Cards:
+1. 🧹 Housekeeping & Cleaning
+   General housekeeping for offices, hospitals, malls & residences
+
+2. 🏭 Industrial Facility Management
+   End-to-end facility services for factories and commercial establishments
+
+3. 🔒 Security Guard / Bouncer
+   Trained security personnel for premises and event management
+
+4. 👔 Supervisor & Gunman Services
+   Experienced supervisors and armed guards as per requirement
+
+5. 🍽️ Canteen & Pantry Maintenance
+   Managed canteen and pantry services for corporate clients
+
+6. 🎪 Event Management Support
+   Manpower support for corporate and public events
+
+7. 🏥 Hospital & Healthcare Support
+   Trained hospital attendants and biohazard waste handling staff
+
+8. 👷 Caretaker Outsourcing
+   Dedicated caretakers for townships, residences, and commercial premises
+```
+
+---
+
+## 📸 WHY CHOOSE US
+
+```
+Cards / Feature List:
+
+✅ Fully Registered & Compliant
+   ESIC, PF, PAN, and Commercial Establishment registered firm
+
+✅ Trained & Uniformed Staff
+   Every employee undergoes comprehensive training before deployment
+
+✅ Day & Night Supervision
+   Field officers conduct thorough day and night monitoring checks
+
+✅ Government Rule Compliant
+   All charges follow government-mandated labour norms
+
+✅ Quick Response
+   Direct communication for all service changes and emergencies
+
+✅ One-Stop Solution
+   From housekeeping to security — everything under one roof
+```
+
+---
+
+## 📞 CONTACT US SECTION — FULL FUNCTIONAL PROMPT
+
+### Static Info Block
+```
+Company: Assistance Protection and Services
+Address: 315/B Nyaya Nagar Extension, Indore, Madhya Pradesh
+Phone 1: +91 9340065775
+Phone 2: +91 9179186798
+Email: assistanceprotectionservices@gmail.com
+Working Hours: Mon–Sat, 9:00 AM – 7:00 PM
+
+Registration Details (optional trust-builder sub-section):
+ESIC No.: 18000318980001099
+PF No.: MPIND1982610000
+PAN: EVTPS1296E
+Reg. No.: INDO240410SE004049
+```
+
+---
+
+### ✉️ Contact Form — Functional Fields
+
+```
+Form Title: "Request a Callback / Get a Quote"
+
+Fields:
+1. Full Name*           → text input
+2. Company / Organization → text input
+3. Phone Number*        → tel input (Indian format)
+4. Email Address        → email input
+5. City / Location      → text input
+6. Service Required*    → dropdown:
+   [ Select Service ]
+   - Housekeeping & Cleaning
+   - Security Guard / Bouncer
+   - Supervisor / Gunman
+   - Caretaker Services
+   - Hospital Support Staff
+   - Canteen & Pantry Management
+   - Event Manpower
+   - Other
+7. Number of Staff Required → number input (min: 1)
+8. Message / Additional Requirements → textarea
+
+Submit Button: "Send Enquiry →"
+
+Success Message: 
+"✅ Thank you! We've received your enquiry. 
+Our team will contact you within 24 hours."
+```
+
+---
+
+### 🔧 Functional Implementation (Next.js + Nodemailer / EmailJS)
+
+**Option A — EmailJS (zero backend, instant setup):**
+```js
+// Install: npm install @emailjs/browser
+
+import emailjs from '@emailjs/browser';
+
+const sendEmail = async (formData) => {
+  await emailjs.send(
+    'YOUR_SERVICE_ID',       // Gmail service
+    'YOUR_TEMPLATE_ID',      // Template with fields below
+    {
+      from_name:    formData.name,
+      company:      formData.company,
+      phone:        formData.phone,
+      email:        formData.email,
+      city:         formData.city,
+      service:      formData.service,
+      staff_count:  formData.staffCount,
+      message:      formData.message,
+      to_email:     'assistanceprotectionservices@gmail.com'
+    },
+    'YOUR_PUBLIC_KEY'
+  );
+};
+
+// EmailJS Template text:
+/*
+New Enquiry from APS Website
+
+Name: {{from_name}}
+Company: {{company}}
+Phone: {{phone}}
+Email: {{email}}
+City: {{city}}
+Service: {{service}}
+Staff Required: {{staff_count}}
+Message: {{message}}
+*/
+```
+
+**Option B — Next.js API Route + Nodemailer:**
+```js
+// /app/api/contact/route.ts
+import nodemailer from 'nodemailer';
+
+export async function POST(req: Request) {
+  const body = await req.json();
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.SMTP_USER,   // your gmail
+      pass: process.env.SMTP_PASS,   // app password
+    },
+  });
+
+  await transporter.sendMail({
+    from: body.email,
+    to: 'assistanceprotectionservices@gmail.com',
+    subject: `New Enquiry: ${body.service} — ${body.name}`,
+    html: `
+      <h2>New Website Enquiry</h2>
+      <p><b>Name:</b> ${body.name}</p>
+      <p><b>Company:</b> ${body.company}</p>
+      <p><b>Phone:</b> ${body.phone}</p>
+      <p><b>Email:</b> ${body.email}</p>
+      <p><b>City:</b> ${body.city}</p>
+      <p><b>Service:</b> ${body.service}</p>
+      <p><b>Staff Required:</b> ${body.staffCount}</p>
+      <p><b>Message:</b> ${body.message}</p>
+    `,
+  });
+
+  return Response.json({ success: true });
+}
+```
+
+---
+
+## 🗺️ FOOTER
+
+```
+Logo: APS — Assistance Protection and Services
+Tagline: "All Manpower Provide"
+Address: 315/B Nyaya Nagar Extension, Indore, MP
+Phones: +91 9340065775 | +91 9179186798
+Email: assistanceprotectionservices@gmail.com
+
+Quick Links: Home | About | Services | Contact
+Legal: © 2024 Assistance Protection and Services. All rights reserved.
+
+Trust badges: ESIC Registered | PF Compliant | PAN Verified
+```
+
+---
+
+**Recommendation:** Go with **EmailJS for now** — no backend needed, directly hits the Gmail, and takes 15 minutes to set up. Switch to Nodemailer only if you want full control over email templates later.

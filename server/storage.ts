@@ -42,29 +42,29 @@ export interface SiteContent {
 
 const defaultContent: SiteContent = {
   hero: {
-    badge: "Trusted Manpower Solutions",
-    title1: "Building Workforce.",
-    title2: "Delivering Excellence.",
-    subtitle: "APS Manpower Services is a leading provider of integrated manpower solutions across Security, Housekeeping, Facility Management and Staffing Services.",
+    badge: "Your One-Stop Facility Management Partner in Indore",
+    title1: "All Manpower.",
+    title2: "All Solutions. Delivered.",
+    subtitle: "Assistance Protection and Services (APS) provides expert housekeeping, security, caretaker outsourcing, event management and industrial facility services to factories, malls, offices and hospitals across Indore and Madhya Pradesh.",
     stats: [
-      { value: 200, suffix: "+", label: "Trained Employees" },
-      { value: 50, suffix: "+", label: "Corporate Clients" },
-      { value: 8, suffix: "+", label: "Years in Service" },
-      { value: 24, suffix: "/7", label: "Support Services" },
+      { value: 500, suffix: "+", label: "Trained Manpower" },
+      { value: 100, suffix: "+", label: "Clients Served" },
+      { value: 10, suffix: "+", label: "Years of Trust" },
+      { value: 24, suffix: "/7", label: "Support Available" },
     ],
   },
   contact: {
-    phone1: "+91 (XXX) XXX-XXXX",
-    phone2: "+91 (XXX) XXX-XXXX",
-    email: "info@apsservices.com",
-    address: "Business Address, City, State – PIN Code",
-    whatsapp: "91XXXXXXXXXX",
-    hours: "Mon – Sat: 9 AM – 6 PM",
+    phone1: "+91 93400 65775",
+    phone2: "+91 91791 86798",
+    email: "assistanceprotectionservices@gmail.com",
+    address: "315/B Nyaya Nagar Extension, Indore, Madhya Pradesh",
+    whatsapp: "919340065775",
+    hours: "Mon – Sat: 9:00 AM – 7:00 PM",
   },
   company: {
     tagline: "People. Trust. Performance.",
-    founded: "2016",
-    description: "Professional facility management for factories, offices, malls, and residences — delivering consistency, reliability, and quality across India.",
+    founded: "2014",
+    description: "Professional facility management for factories, offices, malls, hospitals, and residences across Indore and Madhya Pradesh — delivering consistency, reliability, and quality.",
     esic: "18000318980001099",
     pf: "MPIND1982610000",
     pan: "EVTPS1296E",
@@ -72,8 +72,8 @@ const defaultContent: SiteContent = {
   },
   about: {
     title: "A Company Built on Trust & Quality",
-    body1: "Assistance Protection and Services (APS) is a specialized service provider delivering housekeeping, security, event management, caretaker outsourcing, and comprehensive manpower services to clients across India.",
-    body2: "We work with factories, shopping malls, townships, corporate offices, and residences — bringing the same commitment to quality regardless of client size.",
+    body1: "Assistance Protection and Services (APS) is a highly specialized facility management and manpower solutions provider based in Indore, Madhya Pradesh. We serve clients across industrial sectors including factories, malls, townships, hospitals, offices, and residences.",
+    body2: "Our \"beyond the brief\" approach keeps customer satisfaction at the core of everything we do — delivering impeccable service within agreed timeframes for both government and private organizations.",
   },
 };
 
