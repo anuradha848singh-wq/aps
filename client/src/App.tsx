@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import EnhancedNavigation from "@/components/EnhancedNavigation";
 import EnhancedHero from "@/components/EnhancedHero";
+import AppleScrollSection from "@/components/AppleScrollSection";
 import Services from "@/components/Services";
 import TeamPhotos from "@/components/TeamPhotos";
 import About from "@/components/About";
@@ -27,6 +28,7 @@ function HomePage() {
       <EnhancedNavigation />
       <main>
         <EnhancedHero />
+        <AppleScrollSection />
         <Services />
         <TeamPhotos />
         <WhyChooseUs />

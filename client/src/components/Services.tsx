@@ -111,19 +111,25 @@ export default function Services() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t">
           {services.map((s, i) => (
             <ScrollAnimation key={s.id} delay={i * 0.05} direction="up">
-              <div
-                className="border-r border-b p-4 sm:p-6 lg:p-7 cursor-pointer group hover:bg-muted/40 transition-colors relative min-h-[160px] sm:min-h-[200px]"
+              <motion.div
+                whileHover={{ scale: 1.05, zIndex: 10, boxShadow: "0px 10px 30px rgba(0,0,0,0.1)" }}
+                className="border-r border-b p-4 sm:p-6 lg:p-7 cursor-pointer group bg-background relative min-h-[160px] sm:min-h-[200px] transition-colors"
                 onClick={() => setActive(s)}
               >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-border group-hover:border-primary/50 rounded-full flex items-center justify-center mb-3 sm:mb-5 transition-colors">
+                <motion.div
+                  whileHover={{ rotate: 15, scale: 1.1 }}
+                  className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-border group-hover:border-primary/50 rounded-full flex items-center justify-center mb-3 sm:mb-5 transition-colors"
+                >
                   <s.icon className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
+                </motion.div>
                 <h3 className="font-bold text-sm sm:text-base text-foreground mb-1.5 sm:mb-2 leading-tight">{s.title}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed hidden sm:block">{s.desc}</p>
                 <div className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5">
-                  <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                  <motion.div whileHover={{ x: 5 }}>
+                    <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/40 group-hover:text-primary transition-colors" />
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </ScrollAnimation>
           ))}
         </div>

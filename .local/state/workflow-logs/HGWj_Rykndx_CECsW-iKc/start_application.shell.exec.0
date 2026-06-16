@@ -1,0 +1,95 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K✅ Default admin user created with username: admin, password: admin123
+⚠️  SECURITY WARNING: Please change the default password after first login!
+7:54:08 AM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 20 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+7:54:19 AM [express] GET /api/content 200 in 4ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+7:54:26 AM [express] GET /api/content 200 in 1ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+7:54:27 AM [express] GET /api/content 304 in 15ms :: {"success":true,"data":{"hero":{"badge":"Your O…
+7:54:39 AM [express] GET /api/content 304 in 4ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:20 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx?v=Zc4-kgxG3kuQulY_WVIp_, /src/index.css?v=Zc4-kgxG3kuQulY_WVIp_[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:25 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx?v=Zc4-kgxG3kuQulY_WVIp_, /src/index.css?v=Zc4-kgxG3kuQulY_WVIp_[22m [33m(x2)[39m
+8:01:27 AM [express] GET /api/content 304 in 5ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+8:01:36 AM [express] GET /api/content 304 in 5ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+8:01:59 AM [express] GET /api/content 304 in 3ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+8:26:06 AM [express] GET /api/content 304 in 1ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+8:31:10 AM [express] GET /api/content 304 in 2ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:37:46 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/TeamPhotos.tsx, /src/index.css?v=Zc4-kgxG3kuQulY_WVIp_[22m
+8:37:54 AM [express] GET /api/content 200 in 2ms :: {"success":true,"data":{"hero":{"badge":"Your On…
+8:38:07 AM [express] GET /api/content 304 in 1ms :: {"success":true,"data":{"hero":{"badge":"Your On…

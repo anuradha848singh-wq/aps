@@ -1,0 +1,544 @@
+[1G[0K⠙[1G[0K
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K⠙[1G[0K✅ Default admin user created with username: admin, password: admin123
+⚠️  SECURITY WARNING: Please change the default password after first login!
+1:32:00 PM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 20 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:33:32 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:34:05 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EnhancedNavigation.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:34:25 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EnhancedHero.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:34:54 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:36:24 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:36:44 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Training.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:37:02 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/CustomerSatisfaction.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:37:16 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/CaretakerResponsibilities.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:37:32 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Testimonials.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:37:52 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/FAQ.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:38:18 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:38:40 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:39:03 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ParallaxSection.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:39:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/SocialMediaShare.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:39:56 PM [express] POST /api/contact 201 in 5ms :: {"success":true,"message":"Contact inquiry subm…
+1:39:57 PM [express] POST /api/quote 201 in 1ms :: {"success":true,"message":"Quote request submitte…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:43:14 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EnhancedNavigation.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:43:35 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/EnhancedHero.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:43:37 PM [express] GET /api/content 200 in 93ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:43:55 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:43:57 PM [express] GET /api/content 200 in 9ms
+1:44:23 PM [express] GET /api/content 200 in 7ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:45:03 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/AdminDashboard.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:45:16 PM [express] GET /api/content 200 in 5ms
+1:45:19 PM [express] GET /api/auth/me 401 in 6ms :: {"success":false,"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:46:38 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:46:40 PM [express] GET /api/content 200 in 39ms
+1:46:41 PM [express] GET /api/content 200 in 6ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:47:00 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:47:02 PM [express] GET /api/content 200 in 7ms
+1:47:02 PM [express] GET /api/content 200 in 11ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:47:19 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/FAQ.tsx, /src/index.css?v=LKLY5qwyvcJn2QZnC5wXW[22m
+1:47:21 PM [express] GET /api/content 200 in 14ms
+1:47:21 PM [express] GET /api/content 200 in 8ms
+1:47:30 PM [express] GET /api/content 200 in 10ms
+1:47:33 PM [express] GET /api/auth/me 401 in 2ms :: {"success":false,"message":"Not authenticated"}
+1:48:06 PM [express] GET /api/auth/me 401 in 1ms :: {"success":false,"message":"Not authenticated"}
+1:48:19 PM [express] POST /api/auth/login 200 in 109ms :: {"success":true,"message":"Logged in succe…
+1:48:20 PM [express] GET /api/admin/quotes 200 in 1ms :: {"success":true,"data":[{"id":"330504a8-51a…
+1:48:20 PM [express] GET /api/admin/inquiries 200 in 1ms :: {"success":true,"data":[{"id":"e310c2df-…
+1:48:25 PM [express] GET /api/content 200 in 49ms
+1:48:26 PM [express] GET /api/content 200 in 5ms
+1:48:39 PM [express] GET /api/content 200 in 49ms
+1:48:41 PM [express] GET /api/content 200 in 6ms
+1:48:43 PM [express] GET /api/content 200 in 6ms
+1:48:49 PM [express] PATCH /api/admin/quotes/330504a8-51a7-43bf-b533-11744c6735e1/status 200 in 2ms …
+1:48:50 PM [express] PATCH /api/admin/quotes/330504a8-51a7-43bf-b533-11744c6735e1/status 200 in 1ms …
+1:48:52 PM [express] PATCH /api/admin/quotes/330504a8-51a7-43bf-b533-11744c6735e1/status 200 in 1ms …
+1:48:53 PM [express] PATCH /api/admin/quotes/330504a8-51a7-43bf-b533-11744c6735e1/status 200 in 1ms …
