@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { 
   Building, 
   CheckCircle2, 
@@ -132,8 +132,15 @@ export default function AppleScrollSection() {
   // 400vh container gives enough room to scroll through 4 horizontal panels.
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  // Map vertical scroll (0 -> 1) to horizontal translation (0% -> -75%)
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // Add buttery smooth spring physics to the scroll
+  const smoothScrollY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Map smooth vertical scroll (0 -> 1) to horizontal translation (0% -> -75%)
+  const x = useTransform(smoothScrollY, [0, 1], ["0%", "-75%"]);
 
   const scrollToContact = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 

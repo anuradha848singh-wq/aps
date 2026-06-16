@@ -31,9 +31,11 @@ export default function ScrollAnimation({
       x: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        type: "spring",
+        stiffness: 80,
+        damping: 20,
+        mass: 1,
         delay: delay,
-        ease: [0.22, 1, 0.36, 1],
       },
     },
   }
