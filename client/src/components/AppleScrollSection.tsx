@@ -138,109 +138,171 @@ export default function AppleScrollSection() {
   const scrollToContact = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-background">
-      
-      {/* Sticky viewport wrapper */}
-      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+    <>
+      {/* DESKTOP HORIZONTAL SCROLL (Hidden on Mobile) */}
+      <section ref={targetRef} className="relative h-[400vh] bg-background hidden md:block">
         
-        {/* Horizontal sliding container */}
-        <motion.div style={{ x }} className="flex h-full w-[400vw]">
+        {/* Sticky viewport wrapper */}
+        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
           
-          {servicePairs.map((pair) => (
-            <div key={pair.id} className="relative w-[100vw] h-full flex flex-col justify-center px-6 md:px-16 overflow-hidden border-r border-border/10">
-              
-              {/* Massive faded background typography */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] z-0 overflow-hidden">
-                <h1 className="text-[25vw] font-black text-foreground whitespace-nowrap tracking-tighter">
-                  {pair.label}
-                </h1>
-              </div>
-
-              {/* Texture Layer */}
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none z-0" />
-
-              <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 h-full py-20">
+          {/* Horizontal sliding container */}
+          <motion.div style={{ x }} className="flex h-full w-[400vw]">
+            
+            {servicePairs.map((pair) => (
+              <div key={pair.id} className="relative w-[100vw] h-full flex flex-col justify-center px-6 md:px-16 overflow-hidden border-r border-border/10">
                 
-                {/* Left Side: Text Details */}
-                <div className="flex-1 flex flex-col justify-center space-y-12">
-                  <AnimatedTextBlock service={pair.service1} />
-                  <div className="h-px w-32 bg-primary/30" />
-                  <AnimatedTextBlock service={pair.service2} />
-                  
-                  <button 
-                    onClick={scrollToContact}
-                    className="w-fit mt-8 inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-xl hover:bg-primary transition-colors shadow-2xl shadow-foreground/20"
-                  >
-                    Deploy Service <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
+                {/* Massive faded background typography */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] z-0 overflow-hidden">
+                  <h1 className="text-[25vw] font-black text-foreground whitespace-nowrap tracking-tighter">
+                    {pair.label}
+                  </h1>
                 </div>
 
-                {/* Right Side: Bento Box Visual UI */}
-                <div className="flex-1 w-full h-[50vh] lg:h-[80vh] flex items-center justify-center relative perspective-1000">
+                {/* Texture Layer */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none z-0" />
+
+                <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 h-full py-20">
                   
-                  {/* Glowing Aura Behind Card */}
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br ${pair.color} rounded-full blur-[100px] opacity-20`} />
+                  {/* Left Side: Text Details */}
+                  <div className="flex-1 flex flex-col justify-center space-y-12">
+                    <AnimatedTextBlock service={pair.service1} />
+                    <div className="h-px w-32 bg-primary/30" />
+                    <AnimatedTextBlock service={pair.service2} />
+                    
+                    <button 
+                      onClick={scrollToContact}
+                      className="w-fit mt-8 inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-xl hover:bg-primary transition-colors shadow-2xl shadow-foreground/20"
+                    >
+                      Deploy Service <ArrowRight className="w-5 h-5 ml-2" />
+                    </button>
+                  </div>
 
-                  <motion.div 
-                    whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative w-full max-w-lg aspect-[4/5] rounded-[2.5rem] bg-background/40 border border-border/50 shadow-2xl backdrop-blur-2xl overflow-hidden flex flex-col p-6 gap-4"
-                  >
-                    {/* 2-Grid Vertical Hero Image Area */}
-                    <div className="relative flex-1 flex flex-col gap-4 overflow-hidden rounded-3xl">
-                      <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner group cursor-pointer">
-                        <img 
-                          src={pair.image1} 
-                          alt={pair.service1.title} 
-                          className={`w-full h-full ${pair.imageClass1 || 'object-cover'} mix-blend-luminosity hover:mix-blend-normal transition-all duration-700`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                           <span className="text-white font-bold text-sm tracking-widest uppercase">{pair.service1.title}</span>
+                  {/* Right Side: Bento Box Visual UI */}
+                  <div className="flex-1 w-full h-[50vh] lg:h-[80vh] flex items-center justify-center relative perspective-1000">
+                    
+                    {/* Glowing Aura Behind Card */}
+                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br ${pair.color} rounded-full blur-[100px] opacity-20`} />
+
+                    <motion.div 
+                      whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="relative w-full max-w-lg aspect-[4/5] rounded-[2.5rem] bg-background/40 border border-border/50 shadow-2xl backdrop-blur-2xl overflow-hidden flex flex-col p-6 gap-4"
+                    >
+                      {/* 2-Grid Vertical Hero Image Area */}
+                      <div className="relative flex-1 flex flex-col gap-4 overflow-hidden rounded-3xl">
+                        <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner group cursor-pointer">
+                          <img 
+                            src={pair.image1} 
+                            alt={pair.service1.title} 
+                            className={`w-full h-full ${pair.imageClass1 || 'object-cover'} mix-blend-luminosity hover:mix-blend-normal transition-all duration-700`}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                             <span className="text-white font-bold text-sm tracking-widest uppercase">{pair.service1.title}</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner group cursor-pointer">
-                        <img 
-                          src={pair.image2} 
-                          alt={pair.service2.title} 
-                          className={`w-full h-full ${pair.imageClass2 || 'object-cover'} mix-blend-luminosity hover:mix-blend-normal transition-all duration-700`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                           <span className="text-white font-bold text-sm tracking-widest uppercase">{pair.service2.title}</span>
+                        <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner group cursor-pointer">
+                          <img 
+                            src={pair.image2} 
+                            alt={pair.service2.title} 
+                            className={`w-full h-full ${pair.imageClass2 || 'object-cover'} mix-blend-luminosity hover:mix-blend-normal transition-all duration-700`}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                             <span className="text-white font-bold text-sm tracking-widest uppercase">{pair.service2.title}</span>
+                          </div>
                         </div>
-                      </div>
-                      
-                      {/* Main Gradient Aura Overlay for the box */}
-                      <div className={`absolute inset-0 bg-gradient-to-t ${pair.color} mix-blend-overlay opacity-30 pointer-events-none rounded-3xl`} />
-                    </div>
-
-                    {/* Bottom Bento Modules */}
-                    <div className="flex gap-4 h-32 shrink-0">
-                      
-                      {/* Mini Stat/Icon Card 1 */}
-                      <div className="flex-1 rounded-3xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-2 relative overflow-hidden group">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${pair.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                        {React.createElement(pair.icons[1], { className: "w-6 h-6 text-primary" })}
-                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Certified</span>
+                        
+                        {/* Main Gradient Aura Overlay for the box */}
+                        <div className={`absolute inset-0 bg-gradient-to-t ${pair.color} mix-blend-overlay opacity-30 pointer-events-none rounded-3xl`} />
                       </div>
 
-                      {/* Mini Stat/Icon Card 2 */}
-                      <div className="flex-1 rounded-3xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-2 relative overflow-hidden group">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${pair.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                        {React.createElement(pair.icons[2], { className: "w-6 h-6 text-primary" })}
-                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">24/7 Active</span>
-                      </div>
+                      {/* Bottom Bento Modules */}
+                      <div className="flex gap-4 h-32 shrink-0">
+                        
+                        {/* Mini Stat/Icon Card 1 */}
+                        <div className="flex-1 rounded-3xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-2 relative overflow-hidden group">
+                          <div className={`absolute inset-0 bg-gradient-to-br ${pair.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+                          {React.createElement(pair.icons[1], { className: "w-6 h-6 text-primary" })}
+                          <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Certified</span>
+                        </div>
 
-                    </div>
-                  </motion.div>
+                        {/* Mini Stat/Icon Card 2 */}
+                        <div className="flex-1 rounded-3xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-2 relative overflow-hidden group">
+                          <div className={`absolute inset-0 bg-gradient-to-br ${pair.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+                          {React.createElement(pair.icons[2], { className: "w-6 h-6 text-primary" })}
+                          <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">24/7 Active</span>
+                        </div>
+
+                      </div>
+                    </motion.div>
+
+                  </div>
 
                 </div>
+              </div>
+            ))}
+            
+          </motion.div>
+        </div>
+      </section>
 
+      {/* MOBILE VERTICAL SCROLL (Hidden on Desktop) */}
+      <section className="md:hidden flex flex-col w-full bg-background relative z-10 py-16 gap-24">
+        {servicePairs.map((pair) => (
+          <div key={pair.id + '-mobile'} className="px-5 flex flex-col gap-10">
+            {/* Mobile Header / Typography */}
+            <div className="flex flex-col gap-2 relative">
+              <span className={`text-[12vw] font-black uppercase opacity-10 bg-clip-text text-transparent bg-gradient-to-br ${pair.color} leading-none tracking-tighter absolute -top-8 -left-2 z-0`}>
+                {pair.label}
+              </span>
+              <div className="relative z-10 flex flex-col gap-8 mt-6">
+                <AnimatedTextBlock service={pair.service1} />
+                <div className="h-px w-24 bg-primary/30" />
+                <AnimatedTextBlock service={pair.service2} />
               </div>
             </div>
-          ))}
-          
-        </motion.div>
-      </div>
-    </section>
+
+            {/* Mobile Image Grid */}
+            <div className="relative w-full aspect-[3/4] rounded-[2rem] bg-background/60 border border-border/50 shadow-xl overflow-hidden flex flex-col p-4 gap-3">
+              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-br ${pair.color} rounded-full blur-[80px] opacity-15`} />
+              
+              <div className="relative flex-1 flex flex-col gap-3 overflow-hidden rounded-2xl">
+                <div className="relative flex-1 rounded-xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner">
+                  <img src={pair.image1} alt={pair.service1.title} className={`w-full h-full ${pair.imageClass1 || 'object-cover'} mix-blend-luminosity`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                    <span className="text-white font-bold text-xs tracking-widest uppercase">{pair.service1.title}</span>
+                  </div>
+                </div>
+                <div className="relative flex-1 rounded-xl overflow-hidden bg-muted/80 flex justify-center items-center shadow-inner">
+                  <img src={pair.image2} alt={pair.service2.title} className={`w-full h-full ${pair.imageClass2 || 'object-cover'} mix-blend-luminosity`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                    <span className="text-white font-bold text-xs tracking-widest uppercase">{pair.service2.title}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Mobile Bento */}
+              <div className="flex gap-3 h-20 shrink-0">
+                <div className="flex-1 rounded-xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-1">
+                  {React.createElement(pair.icons[1], { className: "w-5 h-5 text-primary" })}
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Certified</span>
+                </div>
+                <div className="flex-1 rounded-xl bg-muted/30 border border-border/50 flex flex-col items-center justify-center gap-1">
+                  {React.createElement(pair.icons[2], { className: "w-5 h-5 text-primary" })}
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">24/7</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Deploy Button */}
+            <button 
+              onClick={scrollToContact}
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-xl hover:bg-primary transition-colors shadow-lg"
+            >
+              Deploy Service <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
+          </div>
+        ))}
+      </section>
+    </>
   );
 }
