@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Users, Building2, MapPin, Clock } from "lucide-react"
 import { useRef } from "react"
 import AnimatedCounter from "./AnimatedCounter"
-import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
+import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.webp"
 import { useSiteContent } from "@/hooks/useSiteContent"
 
 const iconMap = [Users, Building2, MapPin, Clock]

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Phone, MessageCircle } from "lucide-react"
 import AnimatedCounter from "./AnimatedCounter"
-import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
+import heroImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.webp"
 
 export default function Hero() {
   const scrollToContact = () => {

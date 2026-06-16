@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowUp, ArrowRight } from "lucide-react"
 import { useSiteContent } from "@/hooks/useSiteContent"
-import logoImage from "@assets/image_1781530760930.png"
+import logoImage from "@assets/image_1781530760930.webp"
 
 export default function Footer() {
   const { content } = useSiteContent()

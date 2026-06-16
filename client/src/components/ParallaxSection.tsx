@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { Shield, Award, Users, Clock } from "lucide-react"
-import teamImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.png"
+import teamImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.webp"
 
 const points = [
   { icon: Shield, title: "Trusted Protection", desc: "8+ years keeping facilities secure across India." },

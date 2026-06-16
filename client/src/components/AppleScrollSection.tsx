@@ -1,16 +1,16 @@
 import React, { useRef } from "react";
 // Proper Vite asset imports
-import facilityImage from "@assets/social_facility.png";
-import housekeepingImage from "@assets/social_housekeeping.png";
+import facilityImage from "@assets/social_facility.webp";
+import housekeepingImage from "@assets/social_housekeeping.webp";
 
-import securityTeamImage from "@assets/aps_security_team.jpg";
-import supervisorImage from "@assets/social_supervisor.png";
+import securityTeamImage from "@assets/aps_security_team.webp";
+import supervisorImage from "@assets/social_supervisor.webp";
 
-import canteenImage from "@assets/social_canteen.png";
-import supportImage from "@assets/social_event.png";
+import canteenImage from "@assets/social_canteen.webp";
+import supportImage from "@assets/social_event.webp";
 
-import hospitalStaffImage from "@assets/aps_hospital_staff.jpg";
-import caretakerImage from "@assets/social_caretaker.png";
+import hospitalStaffImage from "@assets/aps_hospital_staff.webp";
+import caretakerImage from "@assets/social_caretaker.webp";
 
 // Combine the textual content with image/bento visual data
 const servicePairs = [

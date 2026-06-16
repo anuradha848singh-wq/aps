@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Moon, Sun, Menu, ChevronDown, ArrowRight } from "lucide-react"
 import { useTheme } from "./ThemeProvider"
-import logoImage from "@assets/image_1781530760930.png"
+import logoImage from "@assets/image_1781530760930.webp"
 
 export default function EnhancedNavigation() {
   const { theme, toggleTheme } = useTheme()

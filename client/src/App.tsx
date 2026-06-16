@@ -4,23 +4,28 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import React, { Suspense, lazy } from "react";
+
+// Critical components loaded immediately
 import EnhancedNavigation from "@/components/EnhancedNavigation";
 import EnhancedHero from "@/components/EnhancedHero";
-import AppleScrollSection from "@/components/AppleScrollSection";
-import Services from "@/components/Services";
-import TeamPhotos from "@/components/TeamPhotos";
-import About from "@/components/About";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Training from "@/components/Training";
-import CustomerSatisfaction from "@/components/CustomerSatisfaction";
-import CaretakerResponsibilities from "@/components/CaretakerResponsibilities";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingQuoteButton from "@/components/FloatingQuoteButton";
-import AdminPage from "@/pages/AdminPage";
-import NotFound from "@/pages/not-found";
+
+// Lazy loaded heavy components
+const AppleScrollSection = lazy(() => import("@/components/AppleScrollSection"));
+const Services = lazy(() => import("@/components/Services"));
+const TeamPhotos = lazy(() => import("@/components/TeamPhotos"));
+const About = lazy(() => import("@/components/About"));
+const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
+const Training = lazy(() => import("@/components/Training"));
+const CustomerSatisfaction = lazy(() => import("@/components/CustomerSatisfaction"));
+const CaretakerResponsibilities = lazy(() => import("@/components/CaretakerResponsibilities"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const Contact = lazy(() => import("@/components/Contact"));
+const AdminPage = lazy(() => import("@/pages/AdminPage"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 function HomePage() {
   return (
@@ -28,17 +33,19 @@ function HomePage() {
       <EnhancedNavigation />
       <main>
         <EnhancedHero />
-        <AppleScrollSection />
-        <Services />
-        <TeamPhotos />
-        <WhyChooseUs />
-        <About />
-        <Training />
-        <CustomerSatisfaction />
-        <CaretakerResponsibilities />
-        <Testimonials />
-        <FAQ />
-        <Contact />
+        <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+          <AppleScrollSection />
+          <Services />
+          <TeamPhotos />
+          <WhyChooseUs />
+          <About />
+          <Training />
+          <CustomerSatisfaction />
+          <CaretakerResponsibilities />
+          <Testimonials />
+          <FAQ />
+          <Contact />
+        </Suspense>
       </main>
       <FloatingQuoteButton />
       <Footer />
@@ -48,11 +55,13 @@ function HomePage() {
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/admin" component={AdminPage} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/admin" component={AdminPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

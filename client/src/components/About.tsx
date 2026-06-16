@@ -1,6 +1,6 @@
 import { Target, Eye, Heart, Award, CheckCircle, Building, Users, Star } from "lucide-react"
 import ScrollAnimation from "./ScrollAnimation"
-import teamImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.png"
+import teamImage from "@assets/generated_images/Indian_APS_facility_management_team_cb58bfbb.webp"
 import { useSiteContent } from "@/hooks/useSiteContent"
 
 const values = [

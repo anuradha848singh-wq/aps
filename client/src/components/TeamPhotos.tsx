@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import ScrollAnimation from "./ScrollAnimation"
-import fieldOfficersImg from "@assets/aps_field_officers.jpg"
-import securityTeamImg from "@assets/aps_security_team.jpg"
-import hospitalStaffImg from "@assets/aps_hospital_staff.jpg"
+import fieldOfficersImg from "@assets/aps_field_officers.webp"
+import securityTeamImg from "@assets/aps_security_team.webp"
+import hospitalStaffImg from "@assets/aps_hospital_staff.webp"
 
 const photos = [
   {

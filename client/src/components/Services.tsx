@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Brush, Shield, Calendar, Users, Building, Coffee, Heart, UserCheck, ArrowRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ScrollAnimation from "./ScrollAnimation"
-import housekeepingImage from "@assets/generated_images/Indian_APS_housekeeping_team_a0f857bb.png"
-import securityImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.png"
-import eventImage from "@assets/generated_images/Indian_APS_event_management_6454c28d.png"
+import housekeepingImage from "@assets/generated_images/Indian_APS_housekeeping_team_a0f857bb.webp"
+import securityImage from "@assets/generated_images/Indian_APS_security_team_bd74dba7.webp"
+import eventImage from "@assets/generated_images/Indian_APS_event_management_6454c28d.webp"
 
 const services = [
   {
